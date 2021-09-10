@@ -1,37 +1,191 @@
-## Welcome to GitHub Pages
+## 这是我的第一个博客
 
 You can use the [editor on GitHub](https://github.com/king-huoye/king-huoye.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+﻿# 操作系统引论
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+操作系统是管理系统资源、控制程序执行，改善人机界面，提供各种服务，合理组织计算机工作流程和为用户有效使用计算机提供良好运行环境的一钟系统软件。
 
-```markdown
-Syntax highlighted code block
+## 操作系统的目标和作用
 
-# Header 1
-## Header 2
-### Header 3
+### 操作系统的目标
 
-- Bulleted
-- List
+老师说的：交互性、实时性、方便性
 
-1. Numbered
-2. List
+- 方便性
+- 有效性
+- 可扩充性
+- 开放性
 
-**Bold** and _Italic_ and `Code` text
+### 操作系统的作用
 
-[Link](url) and ![Image](src)
-```
+- OS作为用户与计算机硬件系统之间的接口
+- OS作为计算机系统资源的管理者
+- OS实现了对计算机资源的抽象
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### 推动操作系统发展的主要动力
 
-### Jekyll Themes
+- 不断提高计算机资源利用率
+- 方便用户
+- 器件的不断更新换代
+- 计算机体系结构的不断发展
+- 不断提出新的应用需求
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/king-huoye/king-huoye.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## 操作系统的发展过程
 
-### Support or Contact
+### 未配置操作系统的计算机系统
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- 人工操作方式
+  - 用户独占全机
+  - CPU等待人工操作
+- 脱机输入/输出（Off-Line I/O）方式
+  - 减少了CPU的空闲时间
+  - 提高了I/O速度
+
+### 单道批处理系统
+
+- 单道批处理系统（Simple Batch Processing System）的处理过程
+
+  - 监督程序
+
+- 单道批处理系统的缺点
+
+  系统中的资源得不到充分的利用
+
+### 多道批处理系统（Multiprogrammed Batch Processing System）
+
+- 多道程序设计的基本概念
+- 多道批处理系统的优缺点
+  - 资源利用率高
+  - 系统吞吐量大
+  - 平均周转时间长
+  - 无交互能力
+- 多道批处理系统需要解决的问题
+  - 处理机争用问题
+  - 内存分配和保护问题
+  - I/O设备分配问题
+  - 文件的组织和管理问题
+  - 作业管理问题
+  - 用户与系统的接口问题
+
+### 分时系统
+
+- 分时系统的引入
+
+  为了满足用户对人—机交互的需求。 用户的需求具体表现在以下几个方面： 人—机交互、共享主机。
+
+- 分时系统中的关键问题
+
+  - 及时接收
+  - 及时处理
+
+- 分时系统的特征
+
+  - 多路性
+  - 独立性
+  - 及时性
+  - 交互性
+
+### 实时系统
+
+- 实时系统的类型
+  - 工业（武器）控制系统
+  - 信息查询系统
+  - 多媒体系统
+  - 切入式系统
+- 实时任务的类型
+  - 周期性实时任务和非周期性实时任务
+  - 硬实时任务和软实时任务
+- 实时系统与分时系统特征的比较
+  - 多路性
+  - 独立性
+  - 及时性
+  - 交互性
+  - 可靠性
+
+### 微机操作系统的发展
+
+- 单用户单任务操作系统
+
+  单用户单任务操作系统的含义是：只允许一个用户上机，且只允许用户程序作为一个任务运行。 最有代表性的单用户单任务微机操作系统是CP/M和MS-DOS。
+
+  - CP/M
+  - MS-DOS
+
+- 单用户多任务操作系统
+
+  单用户多任务操作系统的含义是：只允许一个用户上机，但允许用户把程序分为若个任务，让它们并发执行。
+
+- 多用户多任务操作系统
+
+  多用户多任务操作系统的含义是：允许多个用户通过各自的终端，使用同一台机器，共享主机系统中的各种资源，而每个用户程序又可进一步分为几个任务，使它们能并发执行，从而可进一步提高资源利用率和系统吞吐量。
+
+## 操作系统的基本特性
+
+### 并发
+
+- 并行与并发
+- 引入进程
+
+### 共享
+
+- 互斥共享方式
+- 同时访问方式
+
+### 虚拟
+
+- 时分复用技术
+
+  - 虚拟处理机技术
+  - 虚拟设备技术
+
+- 空分复用技术
+
+  虚拟存储技术
+
+### 异步
+
+进程以人们不可预知的速度向前推进
+
+## 操作系统的主要功能
+
+### 处理机管理功能
+
+- 进程控制
+- 进程同步
+- 进程通信
+- 调度
+
+### 存储器管理功能
+
+- 内存分配
+
+  为每道程序分配内存空间，使它们“各得其所”。 提高存储器的利用率，尽量减少不可用的内存空间(碎片)。 允许正在运行的程序申请附加的内存空间，以适应程序和数据动态增长的需要。
+
+  - 静态分配方式
+  - 动态分配方式
+
+- 内存保护
+
+  内存保护的主要任务是 确保每道用户程序都仅在自己的内存空间内运行，彼此互不干扰。 绝不允许用户程序访问操作系统的程序和数据，也不允许用户程序转移到非共享的其它用户程序中去执行。
+
+- 地址映射
+
+  能够将地址空间中的逻辑地址转换为内存空间中与之对应的物理地址。
+
+- 内存扩充
+
+  - 请求调入功能
+  - 置换功能
+
+### 设备管理功能
+
+设备管理的主要任务如下: 完成用户进程提出的I/O请求,为用户进程分配所需的IO设备,并完成指定的I/O操作。 提高CPU和I/O设备的利用率，提高I/O速度，方便用户使用I/O设备。 为实现上述任务，设备管理应具有缓冲管理、设备分配和设备处理以及虚拟设备等功能。
+
+- 缓冲管理
+- 设备分配
+- 设备处理
+
+### 文件管理功能
