@@ -32,7 +32,7 @@ ssh-keygen -t rsa
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/880058be-7eaf-46b1-8193-d69a7407c527)
 
-![image.png](/img/linux1.png)
+![image.png](img/linux1.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/ecd03b35-834f-4887-b830-dc656ea54c40)
 
