@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的面经整理 - 霍烨景的小空间</title>
+    <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8">
+    <style>
+        /* 从主页复制的核心CSS，或者链接到外部CSS文件 */
+        /* 为了演示方便，这里再次粘贴部分必要样式，实际应用中可以考虑统一CSS文件 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 联系项（按钮样式），在这里作为“返回主页”按钮 */
+        .contact-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 主内容区域，在这里是单列布局 */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* 读书笔记列表项样式，用于每篇文章的链接卡片 */
+        .note-list-item {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e0f2f7 100%);
+            border-left: 4px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: block; /* 确保整个块可点击 */
+            color: inherit; /* 继承父元素颜色 */
+        }
+
+        .note-list-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border-left-color: #2196F3;
+        }
+
+        .note-list-item h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.15em;
+        }
+
+        .note-list-item .note-date {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .note-list-item p {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .header { padding: 20px; }
+            .header h1 { font-size: 2em; }
+            .card { padding: 20px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>我的面经与读书笔记</h1>
+        <p>这里汇总了我的一些学习笔记和面试经验整理。</p>
+        <a href="index.html" class="contact-item">🔙 返回主页</a>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 0;">
+    <div class="main-content">
+        <div class="card">
+            <h2>精选面经</h2>
+            <a href="notes_template.html?note=git-basic-commands" class="note-list-item">
+                <h3>Git 基础指令</h3>
+                <p class="note-date">2025年6月20日更新</p>
+                <p>涵盖Git的基础指令，如clone、add、commit、push等。</p>
+            </a>
+            <a href="notes_template.html?note=linux-basic-commands" class="note-list-item">
+                <h3>Linux 基础指令</h3>
+                <p class="note-date">2025年6月10日更新</p>
+                <p>涵盖Linux的基础指令，如cd、ls、pwd、cat、mv、rm等。</p>
+            </a>
+            <a href="notes_template.html?note=Transformer" class="note-list-item">
+                <h3>Transformer面经</h3>
+                <p class="note-date">2025年5月25日更新</p>
+                <p>包含Transformer的详细介绍和应用场景。</p>
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>读书笔记概览</h2>
+            <a href="notes_template.html?note=reading-book-effective" class="note-list-item">
+                <h3>《高效能人士的七个习惯》精要</h3>
+                <p class="note-date">2024年12月1日</p>
+                <p>关于个人和职业发展的经典，强调主动性、以终为始、要事第一等原则。</p>
+            </a>
+            <a href="notes_template.html?note=deep-learning-book" class="note-list-item">
+                <h3>《深度学习》圣经阅读心得</h3>
+                <p class="note-date">2024年10月15日</p>
+                <p>对深度学习基础理论、神经网络结构、优化算法的理解和总结。</p>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
