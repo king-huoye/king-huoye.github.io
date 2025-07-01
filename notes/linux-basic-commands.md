@@ -32,27 +32,27 @@ ssh-keygen -t rsa
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/880058be-7eaf-46b1-8193-d69a7407c527)
 
-image
+![image.png](../img/linux1.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/ecd03b35-834f-4887-b830-dc656ea54c40)
 
-image
+![image.png](../img/linux2.png)
 
 然后我们回到开发机平台，在首页点击配置**SSH Key**，接着点击**添加SSH公钥**，
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/0635bd0d-3170-4c24-a8fc-8802a8126eca)
 
-image
+![image.png](../img/linux3.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/43c6b155-9094-47bc-b4ae-006581b8f76b)
 
-image
+![image.png](../img/linux4.png)
 
 将刚刚生成的密钥复制下来，粘贴到公钥框中，名称会被自动识别到，最后点击立即添加，SSH Key就配置完成了。
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/79c3d51b-8cdf-4fc8-a5a3-1df5eab31933)
 
-image
+![image.png](../img/linux5.png)
 
 完成SSH Key创建以后，重启**终端**进行远程连接，就会跳过密码输入这一步了。
 
@@ -64,29 +64,29 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/60caf212-6a8b-43f0-9b54-b48f2c85bd30)
 
-image
+![image.png](../img/linux6.png)
 
 如果你已经安装好了VScode，可以在点击左侧的扩展页面，在搜索框中输入“SSH”，第一个就是我们要安装的插件，点开它“Install”就可以了。
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/972cf203-7393-44c5-ba50-bd54c533f0d2)
 
-image
+![image.png](../img/linux7.png)
 
 安装完成插件以后，点击侧边栏的远程连接图标，在SSH中点击“+”按钮，添加开发机SSH连接的登录命令。
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/4ce36eee-3b71-43f0-a665-38e728d8887e)
 
-image
+![image.png](../img/linux8.png)
 
 我们将登录命令复制下来，然后将命令粘贴到弹出的窗口中，最后回车：
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/d68c82aa-0d55-4cb0-be9b-552a0cfee58b)
 
-image
+![image.png](../img/linux9.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/d7624700-97cd-47a9-a0f5-5fd7349b2b06)
 
-image
+![image.png](../img/linux10.png)
 
 配置文件这一块默认就好，当然你也可以自定义，下面是配置文件的具体内容：（这里包括了你所有远程连接过的信息）
 
@@ -101,8 +101,8 @@ Host ssh.intern-ai.org.cn #主机ip也可以是域名  HostName ssh.intern-ai.or
 > 如果将`*StrictHostKeyChecking*no`和`*UserKnownHostsFile*/dev/null`删除掉会跳出指纹验证的弹窗：
 > 
 > [](https://github.com/InternLM/Tutorial/assets/110531742/00169485-f347-4881-88e7-1ecad30eae62)
-> 
-> image
+>
+![image.png](../img/linux11.png)
 > 
 > `StrictHostKeyChecking no`表示禁用严格的主机密钥检查。这意味着当连接到一个新的 SSH 服务器时，不会严格验证服务器的主机密钥，可能会带来一定的安全风险。
 > 
@@ -115,11 +115,11 @@ Host ssh.intern-ai.org.cn #主机ip也可以是域名  HostName ssh.intern-ai.or
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/b3d1386b-f67a-4de7-89bb-e7254d5bd9f2)
 
-image
+![image.png](../img/linux12.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/b87ea98c-733d-4a1f-90b7-1ffbead09dab)
 
-image
+![image.png](../img/linux13.png)
 
 远程连接完成以后，可以选择打开的文件夹，也可以称为工作目录，你可以选择开发机中的也可以选择本地的，开发机中的文件夹，就是我们前面提到的**云盘**。
 
@@ -127,25 +127,25 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/0f4bf460-9b57-403e-9e52-cbddf4d46178)
 
-image
+![image.png](../img/linux14.png)
 
 并且下图中的`->`表示进入开发机后需要重新选择工作目录：
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/0967b8d9-e1de-4955-810e-a80fc2013c57)
 
-image
+![image.png](../img/linux17.png)
 
 而下图中的`->`表示进入上一次开发机选择的工作目录：
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/f5e2e15e-2cfd-40d8-9772-63d2d71fbf83)
 
-image
+![image.png](../img/linux16.png)
 
 每次选择的工作目录都会在这个开发机信息下面显示：（这里就多了一个lagent的工作目录）
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/b7001613-c9da-41e9-9add-924b2f99ef84)
 
-image
+![image.png](../img/linux15.png)
 
 下面我们来介绍一下什么时**端口映射**。
 
@@ -163,7 +163,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/c4ffaa41-04f3-455d-9434-a2b948d138a0)
 
-image
+![image.png](../img/linux18.png)
 
 我们先根据一个图了解一下开发机端口映射是如何工作的：
 
@@ -178,7 +178,7 @@ ssh -p 37367 root@ssh.intern-ai.org.cn -CNg -L 7860:127.0.0.1:7860 -o StrictHost
 
 [](https://github.com/user-attachments/assets/7bdfc581-01a1-42bc-bcb0-07269e1c731b)
 
-image
+![image.png](../img/linux19.png)
 
 > 个人PC会远程连接到开发机唯一暴露在外的37367端口，（这个在SSH的时候提到过每个人的开发机暴露的端口都不一样），并设置隧道选项。暴露端口是作为中转站进行流量的转发。
 > 
@@ -201,7 +201,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/240c57bc-09ac-414b-a803-bfcd2da35593)
 
-image
+![image.png](../img/linux20.png)
 
 ```bash
 ssh -p 37367 root@ssh.intern-ai.org.cn -CNg -L {本地机器_PORT}:127.0.0.1:{开发机_PORT} -o StrictHostKeyChecking=no
@@ -240,13 +240,13 @@ demo.launch()
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/a17c8834-dcb3-4a58-a29f-ed16c5e9a48a)
 
-image
+![image.png](../img/linux22.png)
 
 如果不进行端口映射的话，使用本地IP是访问不了的
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/665d2da3-f248-41a5-a400-659615cc013e)
 
-image
+![image.png](../img/linux21.png)
 
 我可以使用下面的命令，将它输入到powerShell中：
 
@@ -256,8 +256,7 @@ ssh -p 37367 root@ssh.intern-ai.org.cn -CNg -L 7860:127.0.0.1:7860 -o StrictHost
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/e7527553-30d8-4b94-84fc-106ac28869f6)
 
-image
-
+![image.png](../img/linux23.png)
 这样就代表成功了。（**注意**：这个命令不返回任何的内容，这样代表端口映射在运行了，然后在网页中打开连接就可以看到web ui的界面了）
 
 [](https://github.com/user-attachments/assets/45e1a337-d7fa-48ef-b2da-d90e6615e4d8)
@@ -270,7 +269,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/f5fa3257-de24-4731-894a-a2b677543a37)
 
-image
+![image.png](../img/linux24.png)
 
 在这里可以查看端口映射的信息，如果需要修改端口的话，可以在端口那一栏修改端口号。
 
@@ -307,7 +306,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/6242dabe-99bd-400e-94ef-4d169b387b7b)
 
-image
+![image.png](../img/linux25.png)
 
 ### 3.1.2 **mkdir**
 
@@ -315,11 +314,12 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/2beb41a4-b21e-45b9-884b-3ca73c000766)
 
-image
+![image.png](../img/linux26.png)
 
 ### 3.1.3 **cd**
 
 这个命令会是使用最多的一个命令，在使用之前需要为没有计算机基础的同学讲一下目录结构，画一张图让大家理解：
+![image.png](../img/linux27.png)
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/5525cdef-5340-4b82-ae8a-fca563a56649)
 
@@ -353,7 +353,7 @@ image
 
 [](https://github.com/user-attachments/assets/c9390795-0960-4b99-922a-c3b2cf3c6225)
 
-image
+![image.png](../img/linux28.png)
 
 进入编辑模式可以使用`i`，vim的方便之处就是可以在终端进行简单的文件修改。
 
@@ -441,7 +441,7 @@ ln [参数][源文件或目录][目标文件或目录]
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/d380fa75-e1ea-459a-ba62-3043c3dddc46)
 
-image
+![image.png](../img/linux29.png)
 
 ### 3.1.11 **sed**
 
@@ -462,13 +462,13 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/c2c1a107-37eb-474d-b35e-df2105adf66d)
 
-image
+![image.png](../img/linux30.png)
 
 在示例中使用了`echo`命令，这和python中的`print`一样，用来打印内容，这里使用管道符`>`将InternLM打印到file文件中，常用的管道符还有`<`和`|`，比如我们可以使用`grep`命令来查看python中安装的包含`os`字段的包：
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/c4c4df56-e0f5-47df-a7bf-38744c1d192a)
 
-image
+![image.png](../img/linux31.png)
 
 `grep`是一个强大的文本搜索工具。常用参数如下：
 
@@ -542,7 +542,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/1ebd2761-c329-4fd8-bc03-8770f9a1b1a6)
 
-image
+![image.png](../img/linux32.png)
 
 ### 3.3 **工具使用**
 
@@ -552,8 +552,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/001a3142-63a2-4ef6-b9b7-f4b246032476)
 
-image
-
+![image.png](../img/linux33.png)
 然后使用`apt install tmux`命令安装tmux，安装完成以后可以使用`tmux`命令就可以使用tmux了，如果想退出tmux可以使用“**Ctrl+d**”快捷键。
 
 > 开发机仅 /root 路径下的文件是持久化存储的，其他路径下安装的软件重启后都会被重置。
@@ -582,7 +581,7 @@ Conda 是一个开源的包管理和环境管理系统，可在 Windows、macOS 
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/ff5302ca-0142-4bae-9cf7-7ab70718354b)
 
-image
+![image.png](../img/linux34.png)
 
 当我们要使用`conda`安装包的时候会非常慢，我们可以设置国内镜像提升安装速度，示例如下：
 
@@ -600,7 +599,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/m
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/2702355a-8225-4de4-ba47-b36c69f210c0)
 
-image
+![image.png](../img/linux35.png)
 
 这些配置在`Conda`环境配置中，会影响软件包的安装、更新、环境管理等操作的方式和结果。
 
@@ -614,7 +613,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/a02299be-d4ed-4168-b6b5-38fdb118b197)
 
-image
+![image.png](../img/linux36.png)
 
 在不指定python版本时，会自动创建基于最新python版本的虚拟环境。同时我们可以在创建虚拟环境的同时安装必要的包：`conda create -n name numpy matplotlib python=3.10`（但是不建议大家这样用）
 
@@ -636,7 +635,7 @@ conda info -econda info --envs
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/33222a56-f2ff-4aa9-98cc-b969e09063d1)
 
-image
+![image.png](../img/linux37.png)
 
 同时我们还可以看到环境所在的目录。
 
@@ -646,8 +645,7 @@ image
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/cfe41dbb-fd8a-4466-a2c7-399bf801e3d1)
 
-image
-
+![image.png](../img/linux38.png)
 如果想要退出虚拟环境的话可以使用：
 
 ```bash
@@ -672,7 +670,7 @@ conda deactivate
 
 [](https://github.com/InternLM/Tutorial/assets/110531742/8b0ca347-c948-46b0-9b7f-a29701c99f92)
 
-image
+![image.png](../img/linux39.png)
 
 其中包括**环境名字**、**虚拟环境软件包的在线存储库的位置**和**虚拟环境的依赖**。后面我们会使用进阶的使用方法来快速的还原虚拟环境。
 
@@ -736,7 +734,7 @@ image
     
     [](https://github.com/acwwt/Tutorial/assets/110531742/141df0b4-8487-4d49-9daf-2717364e055d)
     
-    image
+    
     
     `nvidia-smi` 是用于监控和管理物理 NVIDIA GPU 设备的工具，而 `vgpu-smi` 专门用于监控和管理通过 NVIDIA vGPU 技术虚拟化的 GPU 资源。
     
@@ -758,7 +756,7 @@ image
     
     [](https://github.com/InternLM/Tutorial/assets/110531742/8ac67764-2a63-4a24-a7c9-1f03b624b2c7)
     
-    image
+ 
     
     其中`*clone*()`函数的主要作用就是用来复制环境的，不过只能从预设的环境中进行复制，主要的代码其实就是：
     
@@ -797,7 +795,7 @@ image
     
     [](https://github.com/InternLM/Tutorial/assets/110531742/27c31187-623e-4048-9d7c-644bf8496d84)
     
-    image
+   
     
     不过这种跟直接使用没什么太大区别，如果将这种操作与开发机中的`studio-conda`命令结合起来会非常方便，不过由于复制环境的方法不太一样。所以如果要实现需要对`/share/install_conda_env.sh`文件的逻辑进行修改。
     
