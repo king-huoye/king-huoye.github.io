@@ -170,7 +170,9 @@ Transformer选择点乘的主要原因是:
 
 $$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V$$
 
-$$\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}$$
+$$
+\text{Mask}=\begin{matrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{matrix}
+$$
 
 ## 为什么在进行多头注意力的时候需要对每个head进行降维？
 
