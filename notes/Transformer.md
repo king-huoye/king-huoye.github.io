@@ -217,12 +217,11 @@ Transformer 的位置编码**通过正余弦函数引入序列的位置信息，
 
  **位置编码的计算公式**
 **位置编码是通过固定的正弦和余弦函数生成的**，其公式为：
-$$\[
-\begin{aligned}
-\text{Positional Encoding}(i, 2k) &= \sin \left(\frac{i}{10000^{2k / d_{\text{model}}}}\right) \\
-\text{Positional Encoding}(i, 2k+1) &= \cos \left(\frac{i}{10000^{2k / d_{\text{model}}}}\right)
-\end{aligned}
-\]
+$$
+\begin{array}{c}
+\text{Positional Encoding}(i, 2k) = \sin \left( \frac{i}{10000^{2k / d_{\text{model}}}} \right) \\
+\text{Positional Encoding}(i, 2k+1) = \cos \left( \frac{i}{10000^{2k / d_{\text{model}}}} \right)
+\end{array}
 $$
 
 其中：
