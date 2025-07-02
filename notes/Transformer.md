@@ -170,7 +170,7 @@ Transformer选择点乘的主要原因是:
 
 $$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V$$
 
-$\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}$
+$$\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}$$
 
 ## 为什么在进行多头注意力的时候需要对每个head进行降维？
 
@@ -185,11 +185,11 @@ $\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\inft
 
 Transformer 的 Encoder 模块是*堆叠的层状结构*，每层通过 **多头注意力** 和 **前向网络** 提取序列的全局和局部特征。它通过 **位置编码** 和 **残差连接** 保证了序列信息建模的有效性和模型的训练稳定性。
 
-$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$
+$$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$$
 
-$H_{2}=\operatorname{LayerNorm}\left(H_{1}+\operatorname{FFN}\left(H_{1}\right)\right)$
+$$H_{2}=\operatorname{LayerNorm}\left(H_{1}+\operatorname{FFN}\left(H_{1}\right)\right)$$
 
-$\begin{array}{c}\text {Positional Encoding}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$
+$$\begin{array}{c}\text {Positional Encoding}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$$
 
 ## 为何在获取输入词向量之后需要对矩阵乘以embedding size的开方？意义是什么？
 
@@ -209,13 +209,13 @@ Transformer 的位置编码**通过正余弦函数引入序列的位置信息，
 
  **位置编码的计算公式**
 **位置编码是通过固定的正弦和余弦函数生成的**，其公式为：
-$\begin{array}{c}\text { Positional Encoding }(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$
+$$\begin{array}{c}\text { Positional Encoding }(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$$
 其中：
-$pos$ 表示词在序列中的位置。
- $i$表示嵌入维度中的索引。
-$d_{model}$ 是嵌入向量的维度。
+$$pos$$ 表示词在序列中的位置。
+ $$i$$表示嵌入维度中的索引。
+$$d_{model}$$ 是嵌入向量的维度。
 
-**通过这种方式，每个位置会生成一个与 $d_{model}$ 维度相同的向量**，具有以下特点：
+**通过这种方式，每个位置会生成一个与 $$d_{model}$$ 维度相同的向量**，具有以下特点：
 - 不同位置的编码是不同的。
 - 编码在嵌入维度上的变化具有一定的周期性。
 
