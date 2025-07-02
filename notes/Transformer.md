@@ -189,9 +189,7 @@ $$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$$
 
 $$H_{2}=\text{LayerNorm}\left(H_{1}+\text{FFN}\left(H_{1}\right)\right)$$
 
-$$\begin{array}{c}\text{Positional Encoding}(i, 2k)=\sin \left(i / 10000^{2k / d_{\text {model }}}\right) 
-
-\text {Positional Encoding}(i, 2k+1)=\cos \left(i / 10000^{2k / d_{\text {model }}}\right)\end{array}$$
+$$\begin{array}{c}\text{Positional Encoding}(i, 2k)=\sin \left(i / 10000^{2k / d_{\text {model }}}\right) \text {Positional Encoding}(i, 2k+1)=\cos \left(i / 10000^{2k / d_{\text {model }}}\right)\end{array}$$
 
 ## 为何在获取输入词向量之后需要对矩阵乘以embedding size的开方？意义是什么？
 
