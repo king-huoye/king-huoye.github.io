@@ -168,7 +168,7 @@ Transformer选择点乘的主要原因是:
 2. **添加到 Scores**，使 padding 位置在 softmax 后被归一化为 0。
 3. **保证计算结果的正确性**，避免无效位置干扰有效的注意力分布。
 
-$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V$
+$$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V$$
 
 $\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}$
 
