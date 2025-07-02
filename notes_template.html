@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">加载中...</title> <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8">
+    <title id="page-title">加载中...</title>
+    <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8"> 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVHw8xeLFNz5JTx7kXyPTg9RLcbVk0frxEJjKj7xVqQ6oYg/zBwLhloesBopz" crossorigin="anonymous">
 
     <style>
         /* CSS样式与主页卡片风格保持一致，并添加了Markdown渲染后的元素样式。
@@ -201,19 +204,42 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1 id="article-title"></h1> <p id="article-date"></p> <a href="interview-notes.html" class="contact-item">🔙 返回笔记列表</a> </div>
+        <h1 id="article-title"></h1>
+        <p id="article-date"></p>
+        <a href="interview-notes.html" class="contact-item">🔙 返回笔记列表</a>
+    </div>
 </div>
 
 <div class="main-content">
     <div id="markdown-content" class="markdown-body">
-        加载中... </div>
+        加载中...
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>   <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-pmKjV+frT5aeAQq+RXlQnpNbeZFRasIWQ9YZ/MKuHLflLPb/nUqQoJdoYxJZCdkJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body, {
+    // 定义 KaTeX 识别的数学公式分隔符
+    delimiters: [
+        {left: '$$', right: '$$', display: true},    // 块级公式，例如 $$ \sum_{i=1}^n i $$
+        {left: '\\[', right: '\\]', display: true},  // 块级公式，例如 \[ \sum_{i=1}^n i \]
+        {left: '$', right: '$', display: false},     // 行内公式，例如 $a^2 + b^2 = c^2$
+        {left: '\\(', right: '\\)', display: false} // 行内公式，例如 \(a^2 + b^2 = c^2\)
+    ],
+    // 允许 KaTeX 渲染未知符号，防止因为不支持的符号导致整个公式不渲染
+    throwOnError: false
+});"></script>
+
+<script>
     document.addEventListener('DOMContentLoaded', async function() {
         const markdownContentDiv = document.getElementById('markdown-content');
         const pageTitle = document.getElementById('page-title'); // 浏览器标签页标题
@@ -272,8 +298,10 @@
                 }
             });
 
-            const htmlContent = marked.parse(markdownText); // 执行Markdown解析
-            markdownContentDiv.innerHTML = htmlContent; // 将解析后的HTML插入到页面
+            // 执行Markdown解析
+            const htmlContent = marked.parse(markdownText);
+            // 将解析后的HTML插入到页面
+            markdownContentDiv.innerHTML = htmlContent;
 
             // 5. 从 Markdown 内容中提取标题和日期，并更新页面标题
             const lines = markdownText.split('\n'); // 将Markdown文本按行分割
