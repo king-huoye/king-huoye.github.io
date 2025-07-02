@@ -189,7 +189,7 @@ $$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$$
 
 $$H_{2}=\text{LayerNorm}\left(H_{1}+\text{FFN}\left(H_{1}\right)\right)$$
 
-$$\begin{array}{c}\text {Positional Encoding}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$$
+$$\begin{array}{c}\text {Positional Encoding}(i, 2k)=\sin \left(i / 10000^{2k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2k+1)=\cos \left(i / 10000^{2k / d_{\text {model }}}\right)\end{array}$$
 
 ## 为何在获取输入词向量之后需要对矩阵乘以embedding size的开方？意义是什么？
 
@@ -598,4 +598,3 @@ BERT 的 **masking** 和 Transformer 的自注意力机制中的**屏蔽未来�
 
 BERT 在训练时的目标是通过上下文填充被遮蔽的单词，而不是生成任务，所以它不需要像生成模型那样在 **attention** 中遮蔽未来位置的信息。
 
-[微调常用方案](https://www.notion.so/1b9383f0ecd880ed96c9e3f11c77b651?pvs=21)
