@@ -187,7 +187,7 @@ Transformer 的 Encoder 模块是*堆叠的层状结构*，每层通过 **多头
 
 $$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$$
 
-$$H_{2}=\operatorname{LayerNorm}\left(H_{1}+\operatorname{FFN}\left(H_{1}\right)\right)$$
+$$H_{2}=\text{LayerNorm}\left(H_{1}+\text{FFN}\left(H_{1}\right)\right)$$
 
 $$\begin{array}{c}\text {Positional Encoding}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\\text { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}$$
 
