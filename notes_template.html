@@ -4,23 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">加载中...</title>
-    
-    <!-- 预加载关键资源 -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    
-    <!-- 样式表 -->
+    <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVHw8xeLFNz5JTx7kXyPTg9RLcbVk0frxEJjKj7xVqQ6oYg/zBwLhloesBopz" crossorigin="anonymous">
 
     <style>
-        /* 添加字体加载优化 */
-        @font-face {
-            font-family: 'KaTeX_Main';
-            font-display: swap; /* 使用 swap 策略，先显示备用字体 */
-        }
-        
-        /* CSS样式与主页卡片风格保持一致，并添加了Markdown渲染后的元素样式 */
+        /* CSS样式与主页卡片风格保持一致，并添加了Markdown渲染后的元素样式。
+           这部分CSS是为了确保解析Markdown后生成的HTML元素（如标题、代码块、列表等）
+           能有美观的样式。 */
         * {
             margin: 0;
             padding: 0;
@@ -64,13 +57,11 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
-        
         a {
             text-decoration: none;
             color: inherit;
         }
-        
-        /* 联系项（按钮样式），在这里作为"返回列表"按钮 */
+        /* 联系项（按钮样式），在这里作为“返回列表”按钮 */
         .contact-item {
             color: white;
             text-decoration: none;
@@ -86,12 +77,12 @@
             transform: translateY(-2px);
         }
 
-        /* 主内容区域 */
+        /* 主内容区域，在这里用于显示Markdown渲染后的文章内容 */
         .main-content {
-            flex: 1;
+            flex: 1; /* 单列布局 */
             min-width: 0;
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 900px; /* 限制文章内容的最大宽度，使其更易读 */
+            margin: 30px auto; /* 居中 */
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 30px;
@@ -99,32 +90,9 @@
             animation: fadeInUp 0.8s ease;
         }
 
-        /* 加载状态样式 */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-
-        .loading::after {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         /* Markdown渲染后的元素样式 */
         .markdown-body {
+            /* 基础文本样式 */
             font-size: 1em;
             line-height: 1.8;
             color: #333;
@@ -136,9 +104,8 @@
             margin-bottom: 0.8em;
             font-weight: 600;
             padding-bottom: 5px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1); /* 下划线 */
         }
-        
         .markdown-body h1 { font-size: 2em; border-bottom: 2px solid #667eea; padding-bottom: 10px;}
         .markdown-body h2 { font-size: 1.6em; border-bottom: 1px solid #764ba2; padding-bottom: 8px;}
         .markdown-body h3 { font-size: 1.3em; }
@@ -148,7 +115,7 @@
         }
 
         .markdown-body ul, .markdown-body ol {
-            margin-left: 25px;
+            margin-left: 25px; /* 列表缩进 */
             margin-bottom: 1em;
         }
 
@@ -161,30 +128,29 @@
             background-color: #f0f0f0;
             border-radius: 4px;
             padding: 2px 5px;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            color: #e83e8c;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* 代码字体 */
+            color: #e83e8c; /* 粉色字体 */
         }
 
         /* 代码块样式 */
         .markdown-body pre {
-            background-color: #282c34;
+            background-color: #282c34; /* 深色背景 */
             border-radius: 8px;
             padding: 15px;
-            overflow-x: auto;
+            overflow-x: auto; /* 允许水平滚动 */
             margin-bottom: 1em;
         }
-        
         .markdown-body pre code {
-            background-color: transparent;
+            background-color: transparent; /* 继承父级背景 */
             padding: 0;
-            color: #abb2bf;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            color: #abb2bf; /* 浅色字体 */
+            white-space: pre-wrap; /* 自动换行 */
+            word-wrap: break-word; /* 单词换行 */
         }
 
         /* 引用块样式 */
         .markdown-body blockquote {
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #667eea; /* 左侧边框 */
             background-color: #f8f8f8;
             padding: 10px 15px;
             margin: 1em 0;
@@ -195,7 +161,7 @@
         /* 表格样式 */
         .markdown-body table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: collapse; /* 合并边框 */
             margin: 1em 0;
         }
 
@@ -214,15 +180,10 @@
         .markdown-body img {
             max-width: 100%;
             height: auto;
-            display: block;
+            display: block; /* 块级显示，居中 */
             margin: 1em auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        /* 数学公式样式优化 */
-        .katex {
-            font-size: 1.1em;
         }
 
         /* 响应式调整 */
@@ -243,20 +204,20 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1 id="article-title">加载中...</h1>
+        <h1 id="article-title"></h1>
         <p id="article-date"></p>
         <a href="interview-notes.html" class="contact-item">🔙 返回笔记列表</a>
     </div>
 </div>
 
 <div class="main-content">
-    <div id="markdown-content" class="markdown-body loading">
-        正在加载笔记内容...
+    <div id="markdown-content" class="markdown-body">
+        加载中...
     </div>
 </div>
 
-<!-- 脚本加载优化 -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
@@ -265,49 +226,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
 
-<!-- KaTeX 延迟加载 -->
-<script>
-    // 延迟加载 KaTeX
-    function loadKaTeX() {
-        const katexScript = document.createElement('script');
-        katexScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js';
-        katexScript.integrity = 'sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8';
-        katexScript.crossOrigin = 'anonymous';
-        
-        katexScript.onload = function() {
-            const autoRenderScript = document.createElement('script');
-            autoRenderScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js';
-            autoRenderScript.integrity = 'sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05';
-            autoRenderScript.crossOrigin = 'anonymous';
-            
-            autoRenderScript.onload = function() {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '\\[', right: '\\]', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\(', right: '\\)', display: false}
-                    ],
-                    throwOnError: false
-                });
-            };
-            
-            document.head.appendChild(autoRenderScript);
-        };
-        
-        document.head.appendChild(katexScript);
-    }
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-pmKjV+frT5aeAQq+RXlQnpNbeZFRasIWQ9YZ/MKuHLflLPb/nUqQoJdoYxJZCdkJ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body, {
+    // 定义 KaTeX 识别的数学公式分隔符
+    delimiters: [
+        {left: '$$', right: '$$', display: true},    // 块级公式，例如 $$ \sum_{i=1}^n i $$
+        {left: '\\[', right: '\\]', display: true},  // 块级公式，例如 \[ \sum_{i=1}^n i \]
+        {left: '$', right: '$', display: false},     // 行内公式，例如 $a^2 + b^2 = c^2$
+        {left: '\\(', right: '\\)', display: false} // 行内公式，例如 \(a^2 + b^2 = c^2\)
+    ],
+    // 允许 KaTeX 渲染未知符号，防止因为不支持的符号导致整个公式不渲染
+    throwOnError: false
+});"></script>
 
+<script>
     document.addEventListener('DOMContentLoaded', async function() {
         const markdownContentDiv = document.getElementById('markdown-content');
-        const pageTitle = document.getElementById('page-title');
-        const articleTitle = document.getElementById('article-title');
-        const articleDate = document.getElementById('article-date');
+        const pageTitle = document.getElementById('page-title'); // 浏览器标签页标题
+        const articleTitle = document.getElementById('article-title'); // 页面内部大标题
+        const articleDate = document.getElementById('article-date'); // 页面内部日期
 
-        // 获取 URL 参数
+        // 1. 获取 URL 中的查询参数
         const urlParams = new URLSearchParams(window.location.search);
-        const noteFileName = urlParams.get('note');
+        const noteFileName = urlParams.get('note'); // 获取 ?note= 后面的值
 
+        // 如果没有指定文件名，显示错误信息并退出
         if (!noteFileName) {
             markdownContentDiv.innerHTML = '<p style="color: #d9534f;">❌ 错误：未指定要加载的笔记文件。<br>请检查URL是否包含有效的 "?note=文件名" 参数。</p>';
             pageTitle.textContent = '错误 - 霍烨景的小空间';
@@ -316,11 +259,15 @@
             return;
         }
 
+        // 2. 构造 Markdown 文件的完整路径
+        // 假设所有 Markdown 文件都存放在 "notes/" 目录下，文件名是 noteFileName.md
         const markdownFilePath = `notes/${noteFileName}.md`;
 
         try {
+            // 3. 异步加载 Markdown 文件内容
             const response = await fetch(markdownFilePath);
 
+            // 检查HTTP响应状态码，如果不是成功的2xx，则抛出错误
             if (!response.ok) {
                 let errorText = `加载失败：文件 "${markdownFilePath}" 不存在或无法访问。`;
                 if (response.status === 404) {
@@ -332,64 +279,72 @@
                 pageTitle.textContent = `错误 - ${noteFileName} - 霍烨景的小空间`;
                 articleTitle.textContent = '加载失败';
                 articleDate.textContent = '';
-                return;
+                console.error("Fetch error:", response); // 打印详细的响应到控制台
+                return; // 提前退出函数
             }
 
-            const markdownText = await response.text();
+            const markdownText = await response.text(); // 获取文件文本内容
 
-            // 配置 marked.js
+            // 4. 配置 marked.js 将 Markdown 转换为 HTML
             marked.setOptions({
-                gfm: true,
-                breaks: true,
+                gfm: true, // 启用 GitHub Flavored Markdown (GFM)，支持更多Markdown语法
+                breaks: true, // 自动将 Markdown 中的硬回车（换行符）转换为 <br>
+                // highlight 函数告诉 marked 在遇到代码块时如何进行高亮
                 highlight: function(code, lang) {
+                    // 检查 highlight.js 是否支持当前语言，如果不支持则使用纯文本模式
                     const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                    // 使用 highlight.js 对代码进行高亮处理
                     return hljs.highlight(code, { language }).value;
                 }
             });
 
+            // 执行Markdown解析
             const htmlContent = marked.parse(markdownText);
+            // 将解析后的HTML插入到页面
             markdownContentDiv.innerHTML = htmlContent;
 
-            // 提取标题和日期
-            const lines = markdownText.split('\n');
-            let extractedTitle = '';
-            let extractedDate = '';
-            let foundTitle = false;
+            // 5. 从 Markdown 内容中提取标题和日期，并更新页面标题
+            const lines = markdownText.split('\n'); // 将Markdown文本按行分割
+            let extractedTitle = ''; // 提取到的标题
+            let extractedDate = ''; // 提取到的日期
+            let foundTitle = false; // 标记是否已找到标题
 
+            // 遍历Markdown文件的前几行（最多10行），尝试提取标题和日期
             for (let i = 0; i < Math.min(lines.length, 10); i++) {
-                const line = lines[i].trim();
+                const line = lines[i].trim(); // 获取当前行并去除首尾空格
 
+                // 尝试匹配 Markdown 的一级标题 (例如: "# 我的标题")
                 const titleMatch = line.match(/^#\s+(.*)/);
                 if (titleMatch && titleMatch[1] && !foundTitle) {
-                    extractedTitle = titleMatch[1].trim();
-                    foundTitle = true;
+                    extractedTitle = titleMatch[1].trim(); // 提取标题文本
+                    foundTitle = true; // 标记已找到标题
                 }
-                
+                // 尝试匹配日期信息 (例如: "Date: 2025年6月28日" 或 "Published: 2025-06-28")
                 const dateMatch = line.match(/(?:Date|Published|日期):\s*(.*)/i);
                 if (dateMatch && dateMatch[1]) {
-                    extractedDate = dateMatch[1].trim();
+                    extractedDate = dateMatch[1].trim(); // 提取日期文本
                 }
 
+                // 如果标题和日期都找到了，就停止遍历
                 if (foundTitle && extractedDate) {
                     break;
                 }
             }
 
+            // 如果从Markdown内容中没有提取到标题，则尝试从文件名生成一个标题
             if (!foundTitle) {
+                // 将文件名中的连字符替换为空格，并首字母大写，移除 .md 后缀
                 extractedTitle = noteFileName.replace(/-/g, ' ').split('.').slice(0, -1).join(' ').replace(/\b\w/g, l => l.toUpperCase());
             }
 
-            pageTitle.textContent = `${extractedTitle} - 霍烨景的小空间`;
-            articleTitle.textContent = extractedTitle;
-            articleDate.textContent = extractedDate ? `📅 ${extractedDate}` : '';
-
-            // 检查是否有数学公式，如果有才加载 KaTeX
-            if (markdownText.includes('$') || markdownText.includes('\\(') || markdownText.includes('\\[')) {
-                loadKaTeX();
-            }
+            // 更新页面元素的文本内容
+            pageTitle.textContent = `${extractedTitle} - 霍烨景的小空间`; // 更新浏览器标签页标题
+            articleTitle.textContent = extractedTitle; // 更新页面内部文章大标题
+            articleDate.textContent = extractedDate ? `📅 ${extractedDate}` : ''; // 如果有日期则显示，并添加表情符号
 
         } catch (error) {
-            console.error("加载或解析Markdown文件失败:", error);
+            console.error("加载或解析Markdown文件失败:", error); // 打印JS错误到控制台
+            // 显示更友好的错误信息给用户
             markdownContentDiv.innerHTML = `<p style="color: #d9534f;">❌ 加载笔记失败。可能原因：文件路径不正确，或者你正在通过 "file://" 协议直接打开文件导致浏览器安全限制。<br>强烈建议使用本地服务器（如 VS Code 的 Live Server 插件）来运行你的网页。</p><p style="color: #d9534f;">详细错误信息: ${error.message}</p>`;
             pageTitle.textContent = '错误 - 霍烨景的小空间';
             articleTitle.textContent = '加载失败';
