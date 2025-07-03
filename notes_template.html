@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">加载中...</title>
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVHw8xeLFNz5JTx7kXyPTg9RLcbVk0frxEJjKj7xVqQ6oYg/zBwLhloesBopz" crossorigin="anonymous">
 
-    <!-- 语法高亮样式 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-
-    <!-- KaTeX 核心样式 -->
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-      crossorigin="anonymous">
-
-
-    <!-- ===== 页面自定义样式（与主页保持一致） ===== -->
     <style>
+        /* 添加字体加载优化 */
+        @font-face {
+            font-family: 'KaTeX_Main';
+            font-display: swap; /* 使用 swap 策略，先显示备用字体 */
+        }
+        
+        /* CSS样式与主页卡片风格保持一致，并添加了Markdown渲染后的元素样式 */
         * {
             margin: 0;
             padding: 0;
@@ -48,10 +53,10 @@
         }
 
         .header h1 {
-            color: #fff;
+            color: white;
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
@@ -59,15 +64,15 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
-
+        
         a {
             text-decoration: none;
             color: inherit;
         }
-
-        /* “返回列表”按钮 */
+        
+        /* 联系项（按钮样式），在这里作为"返回列表"按钮 */
         .contact-item {
-            color: #fff;
+            color: white;
             text-decoration: none;
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
@@ -81,7 +86,7 @@
             transform: translateY(-2px);
         }
 
-        /* 主内容框 */
+        /* 主内容区域 */
         .main-content {
             flex: 1;
             min-width: 0;
@@ -90,53 +95,59 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             animation: fadeInUp 0.8s ease;
         }
 
-        /* ------------ Markdown 渲染样式 ------------ */
+        /* 加载状态样式 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Markdown渲染后的元素样式 */
         .markdown-body {
             font-size: 1em;
             line-height: 1.8;
             color: #333;
         }
 
-        .markdown-body h1,
-        .markdown-body h2,
-        .markdown-body h3,
-        .markdown-body h4,
-        .markdown-body h5,
-        .markdown-body h6 {
+        .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
             color: #333;
             margin-top: 1.5em;
             margin-bottom: 0.8em;
             font-weight: 600;
             padding-bottom: 5px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
-
-        .markdown-body h1 {
-            font-size: 2em;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .markdown-body h2 {
-            font-size: 1.6em;
-            border-bottom: 1px solid #764ba2;
-            padding-bottom: 8px;
-        }
-
-        .markdown-body h3 {
-            font-size: 1.3em;
-        }
+        
+        .markdown-body h1 { font-size: 2em; border-bottom: 2px solid #667eea; padding-bottom: 10px;}
+        .markdown-body h2 { font-size: 1.6em; border-bottom: 1px solid #764ba2; padding-bottom: 8px;}
+        .markdown-body h3 { font-size: 1.3em; }
 
         .markdown-body p {
             margin-bottom: 1em;
         }
 
-        .markdown-body ul,
-        .markdown-body ol {
+        .markdown-body ul, .markdown-body ol {
             margin-left: 25px;
             margin-bottom: 1em;
         }
@@ -145,7 +156,7 @@
             margin-bottom: 0.5em;
         }
 
-        /* 行内代码 */
+        /* 内联代码样式 */
         .markdown-body code {
             background-color: #f0f0f0;
             border-radius: 4px;
@@ -154,7 +165,7 @@
             color: #e83e8c;
         }
 
-        /* 代码块 */
+        /* 代码块样式 */
         .markdown-body pre {
             background-color: #282c34;
             border-radius: 8px;
@@ -162,7 +173,7 @@
             overflow-x: auto;
             margin-bottom: 1em;
         }
-
+        
         .markdown-body pre code {
             background-color: transparent;
             padding: 0;
@@ -171,7 +182,7 @@
             word-wrap: break-word;
         }
 
-        /* 引用块 */
+        /* 引用块样式 */
         .markdown-body blockquote {
             border-left: 4px solid #667eea;
             background-color: #f8f8f8;
@@ -181,15 +192,14 @@
             font-style: italic;
         }
 
-        /* 表格 */
+        /* 表格样式 */
         .markdown-body table {
             width: 100%;
             border-collapse: collapse;
             margin: 1em 0;
         }
 
-        .markdown-body th,
-        .markdown-body td {
+        .markdown-body th, .markdown-body td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
@@ -200,175 +210,192 @@
             font-weight: bold;
         }
 
-        /* 图片 */
+        /* 图片样式 */
         .markdown-body img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 1em auto;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* 响应式 */
+        /* 数学公式样式优化 */
+        .katex {
+            font-size: 1.1em;
+        }
+
+        /* 响应式调整 */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            .header {
-                padding: 20px;
-            }
-            .header h1 {
-                font-size: 2em;
-            }
-            .main-content {
-                padding: 20px;
-            }
+            .container { padding: 10px; }
+            .header { padding: 20px; }
+            .header h1 { font-size: 2em; }
+            .main-content { padding: 20px; }
         }
 
         /* 动画 */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 id="article-title"></h1>
-            <p id="article-date"></p>
-            <a href="interview-notes.html" class="contact-item">🔙 返回笔记列表</a>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1 id="article-title">加载中...</h1>
+        <p id="article-date"></p>
+        <a href="interview-notes.html" class="contact-item">🔙 返回笔记列表</a>
     </div>
+</div>
 
-    <div class="main-content">
-        <div id="markdown-content" class="markdown-body">
-            加载中...
-        </div>
+<div class="main-content">
+    <div id="markdown-content" class="markdown-body loading">
+        正在加载笔记内容...
     </div>
+</div>
 
-    <!-- ===== 第三方库 ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- 脚本加载优化 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+<!-- KaTeX 延迟加载 -->
+<script>
+    // 延迟加载 KaTeX
+    function loadKaTeX() {
+        const katexScript = document.createElement('script');
+        katexScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js';
+        katexScript.integrity = 'sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8';
+        katexScript.crossOrigin = 'anonymous';
+        
+        katexScript.onload = function() {
+            const autoRenderScript = document.createElement('script');
+            autoRenderScript.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js';
+            autoRenderScript.integrity = 'sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05';
+            autoRenderScript.crossOrigin = 'anonymous';
+            
+            autoRenderScript.onload = function() {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            };
+            
+            document.head.appendChild(autoRenderScript);
+        };
+        
+        document.head.appendChild(katexScript);
+    }
 
-    <!-- KaTeX 核心脚本 -->
-    <script defer
-            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-            integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
-            crossorigin="anonymous"></script>
-    <script defer
-            src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-            integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-            crossorigin="anonymous"></script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const markdownContentDiv = document.getElementById('markdown-content');
+        const pageTitle = document.getElementById('page-title');
+        const articleTitle = document.getElementById('article-title');
+        const articleDate = document.getElementById('article-date');
 
-    <!-- ===== 主逻辑脚本 ===== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            const markdownDiv = document.getElementById('markdown-content');
-            const pageTitle   = document.getElementById('page-title');
-            const articleTitleEl = document.getElementById('article-title');
-            const articleDateEl  = document.getElementById('article-date');
+        // 获取 URL 参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const noteFileName = urlParams.get('note');
 
-            /* ---- 解析 URL 参数 ---- */
-            const urlParams   = new URLSearchParams(window.location.search);
-            const noteFile    = urlParams.get('note');
-            if (!noteFile) {
-                markdownDiv.innerHTML = '<p style="color:#d9534f;">❌ 错误：未指定要加载的笔记文件。</p>';
-                pageTitle.textContent = '错误 - 霍烨景的小空间';
-                articleTitleEl.textContent = '加载失败：未指定文件';
+        if (!noteFileName) {
+            markdownContentDiv.innerHTML = '<p style="color: #d9534f;">❌ 错误：未指定要加载的笔记文件。<br>请检查URL是否包含有效的 "?note=文件名" 参数。</p>';
+            pageTitle.textContent = '错误 - 霍烨景的小空间';
+            articleTitle.textContent = '加载失败：未指定文件';
+            articleDate.textContent = '';
+            return;
+        }
+
+        const markdownFilePath = `notes/${noteFileName}.md`;
+
+        try {
+            const response = await fetch(markdownFilePath);
+
+            if (!response.ok) {
+                let errorText = `加载失败：文件 "${markdownFilePath}" 不存在或无法访问。`;
+                if (response.status === 404) {
+                    errorText = `加载失败：文件 "${markdownFilePath}" 未找到 (404)。<br>请检查文件名是否拼写正确（包括大小写），并确认文件是否存在于 'notes/' 目录下。`;
+                } else {
+                    errorText = `加载失败：服务器返回错误状态码 ${response.status} - ${response.statusText}`;
+                }
+                markdownContentDiv.innerHTML = `<p style="color: #d9534f;">❌ ${errorText}</p>`;
+                pageTitle.textContent = `错误 - ${noteFileName} - 霍烨景的小空间`;
+                articleTitle.textContent = '加载失败';
+                articleDate.textContent = '';
                 return;
             }
 
-            const mdPath = `notes/${noteFile}.md`;
+            const markdownText = await response.text();
 
-            try {
-                /* ---- 加载 Markdown ---- */
-                const res = await fetch(mdPath);
-                if (!res.ok) {
-                    markdownDiv.innerHTML = `<p style="color:#d9534f;">❌ 加载失败：文件 "${mdPath}" 不存在或无法访问 (HTTP ${res.status}).</p>`;
-                    pageTitle.textContent  = `错误 - ${noteFile} - 霍烨景的小空间`;
-                    articleTitleEl.textContent = '加载失败';
-                    return;
+            // 配置 marked.js
+            marked.setOptions({
+                gfm: true,
+                breaks: true,
+                highlight: function(code, lang) {
+                    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                    return hljs.highlight(code, { language }).value;
+                }
+            });
+
+            const htmlContent = marked.parse(markdownText);
+            markdownContentDiv.innerHTML = htmlContent;
+
+            // 提取标题和日期
+            const lines = markdownText.split('\n');
+            let extractedTitle = '';
+            let extractedDate = '';
+            let foundTitle = false;
+
+            for (let i = 0; i < Math.min(lines.length, 10); i++) {
+                const line = lines[i].trim();
+
+                const titleMatch = line.match(/^#\s+(.*)/);
+                if (titleMatch && titleMatch[1] && !foundTitle) {
+                    extractedTitle = titleMatch[1].trim();
+                    foundTitle = true;
+                }
+                
+                const dateMatch = line.match(/(?:Date|Published|日期):\s*(.*)/i);
+                if (dateMatch && dateMatch[1]) {
+                    extractedDate = dateMatch[1].trim();
                 }
 
-                const mdText = await res.text();
-
-                /* ---- 配置 marked 与 highlight.js ---- */
-                marked.setOptions({
-                    gfm: true,
-                    breaks: true,
-                    highlight(code, lang) {
-                        const validLang = hljs.getLanguage(lang) ? lang : 'plaintext';
-                        return hljs.highlight(code, { language: validLang }).value;
-                    }
-                });
-
-                const html = marked.parse(mdText);
-                markdownDiv.innerHTML = html;
-
-                /* ---- 提取标题和日期 ---- */
-                const lines = mdText.split('\n');
-                let extraTitle = '';
-                let extraDate  = '';
-                let gotTitle   = false;
-
-                for (let i = 0; i < Math.min(lines.length, 10); i++) {
-                    const line = lines[i].trim();
-
-                    const tMatch = line.match(/^#\s+(.*)/);
-                    if (tMatch && !gotTitle) {
-                        extraTitle = tMatch[1].trim();
-                        gotTitle   = true;
-                    }
-
-                    const dMatch = line.match(/(?:Date|Published|日期):\s*(.*)/i);
-                    if (dMatch) extraDate = dMatch[1].trim();
-
-                    if (gotTitle && extraDate) break;
+                if (foundTitle && extractedDate) {
+                    break;
                 }
-
-                if (!gotTitle) {
-                    extraTitle = noteFile.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-                }
-
-                pageTitle.textContent       = `${extraTitle} - 霍烨景的小空间`;
-                articleTitleEl.textContent  = extraTitle;
-                articleDateEl.textContent   = extraDate ? `📅 ${extraDate}` : '';
-
-                /* ---- 渲染数学公式 ---- */
-                if (typeof renderMathInElement === 'function') {
-                    renderMathInElement(document.body, {
-                        delimiters: [
-                            { left: '$$', right: '$$', display: true },
-                            { left: '\\[', right: '\\]', display: true },
-                            { left: '$',  right: '$',  display: false },
-                            { left: '\\(', right: '\\)', display: false }
-                        ],
-                        throwOnError: false
-                    });
-                }
-
-            } catch (err) {
-                console.error('加载或解析 Markdown 失败:', err);
-                markdownDiv.innerHTML = `<p style="color:#d9534f;">❌ 加载失败：${err.message}</p>`;
-                pageTitle.textContent = '错误 - 霍烨景的小空间';
-                articleTitleEl.textContent = '加载失败';
             }
-        });
-    </script>
+
+            if (!foundTitle) {
+                extractedTitle = noteFileName.replace(/-/g, ' ').split('.').slice(0, -1).join(' ').replace(/\b\w/g, l => l.toUpperCase());
+            }
+
+            pageTitle.textContent = `${extractedTitle} - 霍烨景的小空间`;
+            articleTitle.textContent = extractedTitle;
+            articleDate.textContent = extractedDate ? `📅 ${extractedDate}` : '';
+
+            // 检查是否有数学公式，如果有才加载 KaTeX
+            if (markdownText.includes('$') || markdownText.includes('\\(') || markdownText.includes('\\[')) {
+                loadKaTeX();
+            }
+
+        } catch (error) {
+            console.error("加载或解析Markdown文件失败:", error);
+            markdownContentDiv.innerHTML = `<p style="color: #d9534f;">❌ 加载笔记失败。可能原因：文件路径不正确，或者你正在通过 "file://" 协议直接打开文件导致浏览器安全限制。<br>强烈建议使用本地服务器（如 VS Code 的 Live Server 插件）来运行你的网页。</p><p style="color: #d9534f;">详细错误信息: ${error.message}</p>`;
+            pageTitle.textContent = '错误 - 霍烨景的小空间';
+            articleTitle.textContent = '加载失败';
+            articleDate.textContent = '';
+        }
+    });
+</script>
 </body>
 </html>
