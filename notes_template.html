@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8"> 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body, { /* ... */ });">
-    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body, {    // 定义 KaTeX 识别的数学公式分隔符    delimiters: [        {left: '$$', right: '$$', display: true},    // 块级公式，例如 $$ \sum_{i=1}^n i $$        {left: '\\[', right: '\\]', display: true},  // 块级公式，例如 \[ \sum_{i=1}^n i \]        {left: '$', right: '$', display: false},     // 行内公式，例如 $a^2 + b^2 = c^2$        {left: '\\(', right: '\\)', display: false} // 行内公式，例如 \(a^2 + b^2 = c^2\)    ],    // 允许 KaTeX 渲染未知符号，防止因为不支持的符号导致整个公式不渲染    throwOnError: false});"></script>
 
     <style>
         /* CSS样式与主页卡片风格保持一致，并添加了Markdown渲染后的元素样式。
