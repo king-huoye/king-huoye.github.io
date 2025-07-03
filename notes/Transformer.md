@@ -1,4 +1,4 @@
-{{< katex >}}
+{{<katex>}}
 
 # Transformer的问题
 
