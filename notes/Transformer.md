@@ -1,4 +1,3 @@
-{{< katex >}}
 
 # Transformer的问题
 
