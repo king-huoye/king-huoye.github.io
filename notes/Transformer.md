@@ -168,13 +168,9 @@ Transformer选择点乘的主要原因是:
 2. **添加到 Scores**，使 padding 位置在 softmax 后被归一化为 0。
 3. **保证计算结果的正确性**，避免无效位置干扰有效的注意力分布。
 
-$$
-\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V
-$$
+$$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}+\text{Mask}\right)V$$
 
-$$
-\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}
-$$
+$$\text{Mask}=\begin{bmatrix}0&0&-\infty&0\\0&0&-\infty&0\\-\infty&-\infty&-\infty&-\infty\\0&0&-\infty&0\end{bmatrix}$$
 
 
 
@@ -191,17 +187,11 @@ $$
 
 Transformer 的 Encoder 模块是*堆叠的层状结构*，每层通过 **多头注意力** 和 **前向网络** 提取序列的全局和局部特征。它通过 **位置编码** 和 **残差连接** 保证了序列信息建模的有效性和模型的训练稳定性。
 
-$$
-H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))
-$$
+$$H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))$$
 
-$$
-H_{2}={LayerNorm}\left(H_{1}+{FFN}\left(H_{1}\right)\right)
-$$
+$$H_{2}={LayerNorm}\left(H_{1}+{FFN}\left(H_{1}\right)\right)$$
 
-$$
-\begin{array}{c}\text {PE}(i, 2k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\ {PE}(i, 2k+1)=\cos \left(i / 10000^{2k / d_{\text {model }}}\right)\end{array}
-$$
+$$\begin{array}{c}\text {PE}(i, 2k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\ {PE}(i, 2k+1)=\cos \left(i / 10000^{2k / d_{\text {model }}}\right)\end{array}$$
 
 
 
