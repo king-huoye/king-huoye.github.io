@@ -555,7 +555,7 @@
             // 更新页面标题和元数据
             pageTitle.textContent = `${extractedTitle} | 霍烨景的小空间`;
             articleTitle.textContent = extractedTitle;
-            articleDate.innerHTML = `<i class="fas fa-calendar-alt"></i> ${extractedDate || '未注明日期'}`;
+            articleDate.innerHTML = `<i class="fas fa-calendar-alt"></i> ${extractedDate || new Date().toLocaleString()}`;
             
             // 计算阅读时间和字数
             const textContent = markdownText.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
