@@ -1,4 +1,3 @@
-# git基础指令——readme
 
 # Git基础指令
 
