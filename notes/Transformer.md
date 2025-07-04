@@ -1,4 +1,4 @@
-{{<katex>}}
+
 # Transformer的问题
 
 ![image.png](../img/image.png)
