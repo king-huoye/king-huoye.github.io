@@ -1,6 +1,6 @@
 # Transformer的问题
 
-![image.png](image.png)
+![image.png](../img/image.png)
 
 ## 请问你对Transformer有什么了解
 
@@ -105,17 +105,17 @@ Self-attention 能够捕捉输入序列中的长距离依赖关系，通过堆�
 
 ## 介绍一下QKV的计算过程和计算量
 
-![image.png](image%201.png)
+![image.png](../img/image%201.png)
 
-![image.png](image%202.png)
+![image.png](../img/image%202.png)
 
-![image.png](image%203.png)
+![image.png](../img/image%203.png)
 
 ## 介绍一下Transformer中的参数量
 
-![image.png](image%204.png)
+![image.png](../img/image%204.png)
 
-![image.png](image%205.png)
+![image.png](../img/image%205.png)
 
 ## Transformer为何使用多头注意力机制？（为什么不使用一个头）
 
@@ -140,21 +140,20 @@ Transformer选择点乘的主要原因是:
 3. 在高维空间中表现更稳定
 4. 不需要额外的参数，减少了模型复杂度
 
-![image.png](image%206.png)
-
+![image.png](../img/image%206.png)
 如果使用加法操作，为了得到有效的注意力分布，**通常需要额外的激活函数和非线性映射。这引入了额外的计算步骤，总复杂度可能比点乘稍高，尤其当维度较大时**。
 
 ## 为什么在进行softmax之前需要对attention进行scaled（为什么除以dk的平方根），并使用公式推导进行讲解
 
 **其目的是为了稳定数值范围，避免过大的点积值导致 softmax 输出分布过于极端（尖锐）或不稳定**
 
-![image.png](image%207.png)
+![image.png](../img/image%207.png)
 
-![image.png](image%208.png)
+![image.png](../img/image%208.png)
 
-![image.png](image%209.png)
+![image.png](../img/image%209.png)
 
-![image.png](image%2010.png)
+![image.png](../img/image%2010.png)
 
 - **控制数值范围**：**减小点积值的方差，避免高维特征引发值爆炸**。
 - **平滑注意力分布**：**缓解 softmax 的指数放大效应，使模型捕捉更多的上下文信息**。
@@ -265,7 +264,7 @@ $d_{model}$ 是嵌入向量的维度。
 
 ## 你还了解哪些关于位置编码的技术，各自的优缺点是什么？
 
-![image.png](image%2011.png)
+![image.png](../img/image%2011.png)
 
 **选择方法时需考虑任务需求：**
 
@@ -278,9 +277,8 @@ $d_{model}$ 是嵌入向量的维度。
 - 残差结构通过跳跃连接**解决了深度神经网络中的梯度消失问题**，促进了训练的稳定性与效率。
 - 它加速了网络的收敛过程，并能提高模型的表现，尤其是在处理深度网络时。
 - 在 Transformer 中，**残差结构与层归一化结合使用**，使得模型不仅能够有效训练，还能保持较好的泛化能力。
-
-![image.png](image%2012.png)
-
+- 
+![image.png](../img/image%2012.png)
 ### (1) **缓解梯度消失问题**
 
 - 在深层神经网络中，梯度消失（或爆炸）是一个常见问题，特别是在训练时，**随着层数的增加，梯度会变得越来越小（或越来越大），导致训练困难**。
