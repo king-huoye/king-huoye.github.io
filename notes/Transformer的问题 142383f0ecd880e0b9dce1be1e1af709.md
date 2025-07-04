@@ -195,7 +195,7 @@ H_1=\text{LayerNorm}(X+\text{MHA}(X,X,X))
 $$
 
 $$
-H_{2}=\operatorname{LayerNorm}\left(H_{1}+\operatorname{FFN}\left(H_{1}\right)\right)
+H_{2}={LayerNorm}\left(H_{1}+{FFN}\left(H_{1}\right)\right)
 $$
 
 $$
