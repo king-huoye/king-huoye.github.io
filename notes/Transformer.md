@@ -199,7 +199,7 @@ H_{2}={LayerNorm}\left(H_{1}+{FFN}\left(H_{1}\right)\right)
 $$
 
 $$
-\begin{array}{c}\text {Positional Encoding}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\ { Positional Encoding }(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}
+\begin{array}{c}\text {PE}(i, 2 k)=\sin \left(i / 10000^{2 k / d_{\text {model }}}\right) \\ {PE}(i, 2 k+1)=\cos \left(i / 10000^{2 k / d_{\text {model }}}\right)\end{array}
 $$
 
 
