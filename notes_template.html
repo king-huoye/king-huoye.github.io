@@ -49,7 +49,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 10% 20%, rgba(76, 123, 244, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 60%, rgba(118, 75, 162, 0.15) 0%, transparent 40%);
+            radial-gradient(circle at 90% 60%, rgba(118, 75, 162, 0.15) 0%, transparent 40%);
             pointer-events: none;
         }
 
@@ -69,12 +69,12 @@
             position: relative;
             z-index: 2;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         .contact-item {
             position: relative;
             z-index: 2;
@@ -108,7 +108,7 @@
             left: 0;
             z-index: 1000;
         }
-        
+
         .progress-bar {
             height: 4px;
             background: linear-gradient(90deg, #4C7BF4, #9B30FF);
@@ -138,7 +138,7 @@
             min-height: 300px;
             padding: 30px;
         }
-        
+
         .loading-spinner {
             width: 60px;
             height: 60px;
@@ -148,7 +148,7 @@
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
         }
-        
+
         .loading-text {
             color: #555;
             font-size: 1.2em;
@@ -168,26 +168,26 @@
             font-weight: 600;
             padding-bottom: 5px;
         }
-        
-        .markdown-body h1 { 
-            font-size: 2.2em; 
-            border-bottom: 2px solid #4C7BF4; 
+
+        .markdown-body h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #4C7BF4;
             padding-bottom: 12px;
         }
-        
-        .markdown-body h2 { 
-            font-size: 1.8em; 
-            border-bottom: 1px solid #9B30FF; 
+
+        .markdown-body h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #9B30FF;
             padding-bottom: 8px;
         }
-        
-        .markdown-body h3 { 
-            font-size: 1.5em; 
+
+        .markdown-body h3 {
+            font-size: 1.5em;
             color: #4C7BF4;
         }
 
-        .markdown-body h4 { 
-            font-size: 1.3em; 
+        .markdown-body h4 {
+            font-size: 1.3em;
             color: #6a5acd;
         }
 
@@ -204,7 +204,7 @@
         .markdown-body li {
             margin-bottom: 0.6em;
         }
-        
+
         .markdown-body li::marker {
             color: #4C7BF4;
         }
@@ -219,7 +219,7 @@
             border-radius: 0 8px 8px 0;
             font-size: 1.05em;
         }
-        
+
         .markdown-body blockquote p {
             margin-bottom: 0;
         }
@@ -242,7 +242,7 @@
             margin: 1.5em 0;
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
-        
+
         .markdown-body pre code {
             background-color: transparent;
             padding: 0;
@@ -271,7 +271,7 @@
             border: 1px solid #e2e8f0;
             padding: 12px 15px;
         }
-        
+
         .markdown-body tr:nth-child(even) {
             background-color: #f8f9ff;
         }
@@ -284,7 +284,7 @@
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.12);
         }
-        
+
         .metadata {
             display: flex;
             justify-content: space-between;
@@ -295,7 +295,7 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        
+
         .metadata-item {
             display: flex;
             align-items: center;
@@ -303,11 +303,11 @@
             color: #4a5568;
             font-size: 0.95em;
         }
-        
+
         .metadata-item i {
             color: #4C7BF4;
         }
-        
+
         .error-message {
             background: #ffebee;
             border-radius: 8px;
@@ -316,7 +316,7 @@
             border-left: 4px solid #f44336;
             color: #b71c1c;
         }
-        
+
         .error-message h3 {
             color: #d32f2f;
             margin-bottom: 10px;
@@ -324,7 +324,7 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .error-message p {
             margin-bottom: 5px;
         }
@@ -334,10 +334,10 @@
             .header { padding: 25px; }
             .header h1 { font-size: 1.8em; }
             .main-content { padding: 25px; }
-            
+
             .markdown-body h1 { font-size: 1.8em; }
             .markdown-body h2 { font-size: 1.5em; }
-            
+
             .metadata {
                 flex-direction: column;
                 align-items: flex-start;
@@ -349,27 +349,27 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        
+
         /* KaTeX公式样式修正 */
         .katex {
             font-size: 1.15em !important;
         }
-        
+
         .katex .katex-html {
             white-space: pre-wrap;
         }
-        
+
         .markdown-body .katex-display {
             margin: 1.5em 0;
             overflow-x: auto;
             overflow-y: hidden;
         }
-        
+
         /* 目录样式 */
         .toc-container {
             background: #f8f9ff;
@@ -379,7 +379,7 @@
             border-left: 4px solid #4C7BF4;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        
+
         .toc-header {
             font-size: 1.2em;
             margin-bottom: 10px;
@@ -389,33 +389,46 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .toc-list {
             list-style-type: none;
         }
-        
+
         .toc-list li {
             margin: 8px 0;
             padding-left: 15px;
             position: relative;
         }
-        
+
         .toc-list li::before {
             content: "•";
             color: #9B30FF;
             position: absolute;
             left: 0;
         }
-        
+
         .toc-list li a {
             color: #3a506b;
             text-decoration: none;
             transition: all 0.2s;
         }
-        
+
         .toc-list li a:hover {
             color: #4C7BF4;
             text-decoration: underline;
+        }
+
+        /* 可访问性增强 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
@@ -425,30 +438,30 @@
 </div>
 
 <div class="container">
-    <div class="header">
-        <h1 id="article-title">面试笔记</h1>
-        <div class="metadata">
-            <div class="metadata-item" id="article-date">
-                <i class="fas fa-calendar-alt"></i> 加载中...
+    <header class="header" role="banner">
+        <h1 id="article-title" aria-label="当前文章标题">面试笔记</h1>
+        <div class="metadata" role="contentinfo">
+            <div class="metadata-item" id="article-date" aria-label="发布日期">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i> 加载中...
             </div>
-            <div class="metadata-item">
-                <i class="fas fa-clock"></i> 约 <span id="reading-time">7</span> 分钟阅读
+            <div class="metadata-item" aria-label="阅读时间">
+                <i class="fas fa-clock" aria-hidden="true"></i> 约 <span id="reading-time">7</span> 分钟阅读
             </div>
-            <div class="metadata-item" id="word-count">
-                <i class="fas fa-file-alt"></i> <span id="word-count-value">0</span> 字
+            <div class="metadata-item" id="word-count" aria-label="字数统计">
+                <i class="fas fa-file-alt" aria-hidden="true"></i> <span id="word-count-value">0</span> 字
             </div>
         </div>
-        <a href="interview-notes.html" class="contact-item"><i class="fas fa-arrow-left"></i> 返回笔记列表</a>
-    </div>
+        <a href="interview-notes.html" class="contact-item" aria-label="返回笔记列表"><i class="fas fa-arrow-left" aria-hidden="true"></i> 返回笔记列表</a>
+    </header>
 </div>
 
 <div class="main-content">
-    <div id="markdown-content" class="markdown-body">
+    <main id="markdown-content" class="markdown-body" role="main">
         <div class="loading-container">
-            <div class="loading-spinner"></div>
+            <div class="loading-spinner" role="status" aria-label="加载中"></div>
             <p class="loading-text">加载笔记内容中...</p>
         </div>
-    </div>
+    </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -471,34 +484,40 @@
         const progressBar = document.getElementById('progress-bar');
         const readingTimeElement = document.getElementById('reading-time');
         const wordCountElement = document.getElementById('word-count-value');
-        
+
         // 初始进度条设置为20%
         progressBar.style.width = '20%';
-        
+
         // 1. 获取 URL 中的查询参数
         const urlParams = new URLSearchParams(window.location.search);
         const noteFileName = urlParams.get('note') || 'sample';
-        
+
+        // 验证文件名以防止路径遍历攻击
+        if (!/^[a-zA-Z0-9_-]+$/.test(noteFileName)) {
+            showError('无效的笔记文件名');
+            return;
+        }
+
         // 2. 构造 Markdown 文件路径
         const markdownFilePath = `notes/${noteFileName}.md`;
-        
+
         try {
             // 3. 异步加载 Markdown 文件内容
             const response = await fetch(markdownFilePath);
-            
+
             // 更新进度条到40%
             progressBar.style.width = '40%';
-            
+
             // 检查响应状态
             if (!response.ok) {
                 throw new Error(`加载失败: ${response.status} ${response.statusText}`);
             }
-            
+
             const markdownText = await response.text();
-            
+
             // 更新进度条到60%
             progressBar.style.width = '60%';
-            
+
             // 4. 配置 marked.js
             marked.setOptions({
                 gfm: true,
@@ -508,63 +527,63 @@
                     return hljs.highlight(code, { language }).value;
                 }
             });
-            
+
             // 5. 解析 Markdown
             const htmlContent = marked.parse(markdownText);
-            
+
             // 更新进度条到80%
             progressBar.style.width = '80%';
-            
-            // 6. 插入解析后的内容
-            markdownContentDiv.innerHTML = htmlContent;
-            
+
+            // 6. 安全地插入解析后的内容（防止XSS）
+            markdownContentDiv.innerHTML = sanitizeHTML(htmlContent);
+
             // 7. 提取标题和元数据
             const lines = markdownText.split('\n');
             let extractedTitle = '';
             let extractedDate = '';
             let category = '技术笔记';
-            
+
             for (let i = 0; i < Math.min(lines.length, 10); i++) {
                 const line = lines[i].trim();
-                
+
                 // 匹配标题
                 const titleMatch = line.match(/^#\s+(.*)/);
                 if (titleMatch && titleMatch[1] && !extractedTitle) {
-                    extractedTitle = titleMatch[1].trim();
+                    extractedTitle = sanitizeText(titleMatch[1].trim());
                 }
-                
+
                 // 匹配日期
                 const dateMatch = line.match(/(?:Date|Published|日期):\s*(.*)/i);
                 if (dateMatch && dateMatch[1] && !extractedDate) {
-                    extractedDate = dateMatch[1].trim();
+                    extractedDate = sanitizeText(dateMatch[1].trim());
                 }
-                
+
                 // 匹配分类
                 const categoryMatch = line.match(/(?:Category|分类):\s*(.*)/i);
                 if (categoryMatch && categoryMatch[1]) {
-                    category = categoryMatch[1].trim();
+                    category = sanitizeText(categoryMatch[1].trim());
                 }
             }
-            
+
             if (!extractedTitle) {
                 extractedTitle = noteFileName.replace(/-/g, ' ')
                     .split('.').slice(0, -1).join(' ')
                     .replace(/\b\w/g, l => l.toUpperCase());
             }
-            
+
             // 更新页面标题和元数据
             pageTitle.textContent = `${extractedTitle} | 霍烨景的小空间`;
             articleTitle.textContent = extractedTitle;
-            articleDate.innerHTML = `<i class="fas fa-calendar-alt"></i> ${extractedDate || new Date().toLocaleString()}`;
-            
+            articleDate.innerHTML = `<i class="fas fa-calendar-alt" aria-hidden="true"></i> ${extractedDate || new Date().toLocaleString()}`;
+
             // 计算阅读时间和字数
             const textContent = markdownText.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
             const wordCount = textContent.trim().split(/\s+/).length;
             const readingTime = Math.ceil(wordCount / 250);
-            
+
             wordCountElement.textContent = wordCount;
             readingTimeElement.textContent = readingTime;
-            
+
             // 8. 渲染数学公式
             renderMathInElement(markdownContentDiv, {
                 delimiters: [
@@ -576,7 +595,7 @@
                 throwOnError: false,
                 output: 'mathml'
             });
-            
+
             // 更新进度条到100%，然后移除
             setTimeout(() => {
                 progressBar.style.width = '100%';
@@ -587,16 +606,21 @@
                     }, 500);
                 }, 300);
             }, 200);
-            
+
             // 生成目录
             generateTOC();
-            
+
         } catch (error) {
             console.error("加载或解析Markdown文件失败:", error);
+            showError(error.message);
+        }
+
+        // 错误处理函数
+        function showError(message) {
             markdownContentDiv.innerHTML = `
                 <div class="error-message">
-                    <h3><i class="fas fa-exclamation-triangle"></i> 加载笔记失败</h3>
-                    <p>${error.message}</p>
+                    <h3><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> 加载笔记失败</h3>
+                    <p>${sanitizeText(message)}</p>
                     <p>可能原因：文件未找到、路径错误或网络问题。</p>
                     <p>请尝试以下操作：</p>
                     <ul>
@@ -609,57 +633,74 @@
             `;
             pageTitle.textContent = '错误 - 霍烨景的小空间';
             articleTitle.textContent = '加载失败';
-            articleDate.innerHTML = `<i class="fas fa-calendar-alt"></i> ${new Date().toLocaleDateString()}`;
+            articleDate.innerHTML = `<i class="fas fa-calendar-alt" aria-hidden="true"></i> ${new Date().toLocaleDateString()}`;
+        }
+
+        // HTML内容净化函数
+        function sanitizeHTML(html) {
+            // 简单的XSS防护 - 移除潜在危险的标签和属性
+            return html
+                .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                .replace(/on\w+="[^"]*"/gi, '')
+                .replace(/javascript:/gi, '');
+        }
+
+        // 文本净化函数
+        function sanitizeText(text) {
+            // 简单的XSS防护 - 转义HTML特殊字符
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
     });
-    
+
     // 生成目录的函数
     function generateTOC() {
         const content = document.getElementById('markdown-content');
         const headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        
+
         if (headings.length < 2) return;
-        
+
         let tocHtml = `
             <div class="toc-container">
-                <div class="toc-header"><i class="fas fa-list"></i> 文章目录</div>
+                <div class="toc-header"><i class="fas fa-list" aria-hidden="true"></i> 文章目录</div>
                 <ul class="toc-list">
         `;
-        
+
         headings.forEach((heading, index) => {
             // 为没有ID的标题添加ID
             if (!heading.id) {
                 heading.id = `heading-${index}`;
             }
-            
+
             const level = parseInt(heading.tagName.charAt(1));
             const indent = level > 2 ? 'style="padding-left: ' + (level - 2) * 15 + 'px;"' : '';
-            
+
             tocHtml += `
                 <li ${indent}>
                     <a href="#${heading.id}">${heading.textContent}</a>
                 </li>
             `;
         });
-        
+
         tocHtml += `
                 </ul>
             </div>
         `;
-        
+
         content.insertAdjacentHTML('afterbegin', tocHtml);
     }
-    
+
     // 滚动时更新进度条
     window.addEventListener('scroll', function() {
         const progressBar = document.querySelector('.progress-bar');
         if (!progressBar) return;
-        
+
         const windowHeight = window.innerHeight;
         const fullHeight = document.body.clientHeight;
         const scrolled = window.scrollY;
         const progress = (scrolled / (fullHeight - windowHeight)) * 100;
-        
+
         progressBar.style.width = `${progress}%`;
     });
 </script>
