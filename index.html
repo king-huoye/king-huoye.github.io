@@ -26,7 +26,6 @@
             padding: 20px;
         }
 
-        /* 头部区域优化 */
         .header {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -128,7 +127,100 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        /* 卡片样式优化 */
+        .page-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-info span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            align-items: flex-start;
+        }
+
+        .main-content {
+            flex: 3;
+            min-width: 0;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.8s;
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+        }
+
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .sidebar h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.97);
             border-radius: 20px;
@@ -162,6 +254,7 @@
         .card:nth-child(3) { animation-delay: 0.4s; }
         .card:nth-child(4) { animation-delay: 0.6s; }
         .card:nth-child(5) { animation-delay: 0.8s; }
+        .card:nth-child(6) { animation-delay: 1.0s; }
 
         .card h2 {
             color: #333;
@@ -183,7 +276,6 @@
             border-radius: 2px;
         }
 
-        /* 技能标签优化 */
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -208,7 +300,6 @@
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
-        /* 项目卡片优化 */
         .project {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 15px;
@@ -254,7 +345,6 @@
             z-index: 1;
         }
 
-        /* 论文卡片样式优化 */
         .paper {
             background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
             border-radius: 18px;
@@ -316,7 +406,6 @@
             color: #2c3e50;
         }
 
-        /* 论文元信息样式优化 */
         .paper-meta {
             display: flex;
             flex-wrap: wrap;
@@ -341,7 +430,66 @@
             color: #0c5460;
         }
 
-        /* 时间线样式优化 */
+        /* 读书笔记列表项样式优化 */
+        .note-list-item {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e0f2f7 100%);
+            border-left: 4px solid #4CAF50;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note-list-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .note-list-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left-color: #2196F3;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+
+        .note-list-item h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .note-list-item .note-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .note-list-item p {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 1em;
+            position: relative;
+            z-index: 1;
+        }
+
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -403,8 +551,17 @@
             color: #666;
         }
 
-        /* 响应式设计优化 */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 0 10px;
+            }
+            .sidebar {
+                min-width: unset;
+                width: 100%;
+                margin-bottom: 30px;
+                position: static;
+            }
             .container {
                 padding: 15px;
             }
@@ -415,10 +572,6 @@
 
             .header h1 {
                 font-size: 2.2em;
-            }
-
-            .header p {
-                font-size: 1.1em;
             }
 
             .contact-info {
@@ -434,21 +587,9 @@
             .skills {
                 justify-content: center;
             }
-
-            .timeline {
-                padding-left: 25px;
-            }
-
-            .timeline::before {
-                left: 12px;
-            }
-
-            .timeline-item::before {
-                left: -32px;
-            }
-
-            .card h2 {
-                font-size: 1.8em;
+            .page-info {
+                flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -481,7 +622,6 @@
             }
         }
 
-        /* 动画优化 */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -493,7 +633,6 @@
             }
         }
 
-        /* 浮动动画优化 */
         .floating {
             animation: floating 4s ease-in-out infinite;
         }
@@ -521,16 +660,10 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(45deg, #5a6fd8, #6a4190);
         }
-
-        /* 链接样式优化 */
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- 头部个人信息 -->
     <div class="header floating">
         <div class="profile-img">
             <img src="/img/YANZI.jpg" alt="个人头像">
@@ -547,117 +680,174 @@
             <a href="https://github.com/king-huoye" class="contact-item" target="_blank">
                 <span>🐙</span> GitHub
             </a>
-            <a href="https://blog.csdn.net/kingJamesbond" class="contact-item" target="_blank">
+            <a href="https://blog.csdn.net/kingJamesbond?spm=1010.2135.3001.5343" class="contact-item" target="_blank">
                 <span>📝</span> CSDN
             </a>
         </div>
-    </div>
-
-    <!-- 关于我 -->
-    <div class="card">
-        <h2>关于我</h2>
-        <p>我现在是一名广东工业大学计算机技术专业研究生三年级学生，秋招分别获得了奥比中光深度学习算法工程师的offer以及汇丰软件的offer，我的研究方向是无参考图像质量评估以及多模态医学分类，同时我自己还有若干篇共同作者论文。</p>
-        <p style="margin-top: 15px;">希望大家一起交流，提升自己。</p>
-    </div>
-
-    <!-- 技能专长 -->
-    <div class="card">
-        <h2>技能专长</h2>
-        <p>以下是我在技术开发方面的核心技能和专业领域:</p>
-        <div class="skills">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">PyTorch</span>
-            <span class="skill-tag">Dify</span>
-            <span class="skill-tag">RagFlow</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">OpenCV</span>
-            <span class="skill-tag">机器学习</span>
-            <span class="skill-tag">深度学习</span>
-        </div>
-    </div>
-
-    <!-- 论文列表 -->
-    <div class="card">
-        <h2>论文列表</h2>
-        <div class="paper">
-            <h3>
-                <a href="https://ieeexplore.ieee.org/document/10822792" target="_blank">
-                    🏥 一种具有缺失模态的鲁棒鼻咽癌死亡率自适应预测网络
-                </a>
-            </h3>
-            <p>本文提出了一种用于预测鼻咽癌患者死亡率的自适应网络IMAN，使用在多模态数据缺失的情况下。IMAN具有三个关键模块：动态跨模态校准（DCMC），空间-上下文注意力集成（SCAI）和上下文感知特征获取（CAFA）。DCMC模块利用可学习参数自适应缩放对齐医学图像和文本数据，增强了异构输入的归一化。SCAI模块通过在自注意力机制中融入位置信息来改进特征融合，使其能够检测医学图像中的细微模式。CAFA模块通过学习到的偏移量调整卷积核位置，允许在各种尺度和方向上进行自适应特征捕获。在20%EBV诊断数据缺失的条件下，IMAN对比目前其他模型准确率从0.83提高到0.94，AUC从0.72提高到0.92。</p>
-            <div class="paper-meta">
-                <span class="paper-tag">第一作者</span>
-                <span class="paper-tag">CCF-B会议BIBM</span>
-                <span class="paper-tag">医学AI</span>
-                <span class="paper-tag">2024</span>
-            </div>
-        </div>
-        <div class="paper">
-            <h3>
-                <a href="https://link.springer.com/article/10.1007/s00371-024-03376-5" target="_blank">
-                    🔍 基于四元数注意力网络增强的三维舞蹈生成模型
-                </a>
-            </h3>
-            <p>本文提出QEAN（四元数增强注意力网络），通过旋转位置编码(SPE)增强时序建模，利用四元数旋转注意力(QRA)建立音乐-舞蹈跨模态关联。在AIST++数据集上，QEAN在动作质量、多样性和音乐同步性上全面领先，有效解决了关节变形等难题，实现了高质量音乐驱动舞蹈生成。</p>
-            <div class="paper-meta">
-                <span class="paper-tag">第二作者</span>
-                <span class="paper-tag">Sci三区The Visual Computer</span>
-                <span class="paper-tag">图形学、多模态</span>
-                <span class="paper-tag">2024</span>
-            </div>
-        </div>
-        <div class="paper">
-            <h3>
-                <a href="https://link.springer.com/chapter/10.1007/978-981-96-6596-9_13" target="_blank">
-                    🤖 基于视频的人体三维姿态重建
-                </a>
-            </h3>
-            <p>本文提出FOPS-V方法，通过特征感知优化(FAO)、并行多尺度注意力(PSAA)和归一化特征表示(NFAR)三个模块，显著提升视频中3D人体重建精度。在Human3.6M、3DPW等数据集上，FOPS-V在MPJPE等指标上全面超越现有方法，在复杂姿态和遮挡场景下表现尤为突出。</p>
-            <div class="paper-meta">
-                <span class="paper-tag">第四作者</span>
-                <span class="paper-tag">CCF-C会议ICONIP会议论文</span>
-                <span class="paper-tag">3D重建</span>
-                <span class="paper-tag">2024</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 项目经验 -->
-    <div class="card">
-        <h2>项目经验</h2>
-        <div class="project">
-            <h3>📷 图像监控质量智能分析技术研究</h3>
-            <p>在边缘端部署轻量级图像处理模块，通过计算图像的平均亮度并将其映射到0-100范围，实现对图像亮度的快速评估。结合预训练的YOLO模型，对图像中的作业人员、工器具等关键目标进行检测，筛选出亮度低于60且偏暗的图像，确保低质量图像能够被及时识别与处理。实现基于对比学习与Transformer模型的图像质量评估系统，显著提升了复杂场景下图像质量评估的准确性与鲁棒性。</p>
-        </div>
-        <div class="project">
-            <h3>🧍 基于3D Pose Estimation的人体三维数据测量</h3>
-            <p>使用OpenPose实现人体关键点检测和姿态估计，通过PIFuHD模型完成高精度三维人体重建，构建出从2D图像到3D模型的端到端重建流程，实现从平面图像到三维模型的完整转换。调试基于3D模型的人体精确测量算法，利用横截面分析与多平面切片技术，实现对颈部、肩部部等关键部位的精确定位与测量。算法根据人体特征，自动获取身高、体重估计及各部位周长和长度数据，如肩宽、胸围等，同时完成比例校准与数值映射。与前端开发人员合作，实现小程序端的图片上传和参数输入界面，完成测量结果的数据返回和展示功能。</p>
-        </div>
-    </div>
-
-    <!-- 学习经历 -->
-    <div class="card">
-        <h2>学习经历</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2023年至今</div>
-                <h3>广东工业大学计算机技术硕士</h3>
-                <p>获得广东工业大学新生学业奖学金,广东工业大学学业奖学金一等奖,三七互娱赋能奖助学金</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2019-2023年</div>
-                <h3>佛山大学计算机科学与技术专业</h3>
-                <p>获得佛山大学学业奖学金二等奖两次、一次佛山大学优秀学生班干、机甲大师高校联盟赛步兵挑战赛二等奖、全国大学生数学竞赛一等奖</p>
-            </div>
+        <div class="page-info">
+            <span id="current-time"></span>
+            <span id="visitor-count"></span>
         </div>
     </div>
 </div>
 
+<div class="main-wrapper">
+    <div class="main-content">
+        <div class="card">
+            <h2>关于我</h2>
+            <p>我现在是一名广东工业大学计算机技术专业研究生三年级学生，秋招分别获得了奥比中光深度学习算法工程师的offer以及汇丰软件的offer。我的研究方向是无参考图像质量评估以及多模态医学分类,同时还有若干篇共同作者的论文(三维姿态估计、图像生成等）</p>
+            <p style="margin-top: 15px;">希望大家一起交流，提升自己。</p>
+        </div>
+
+        <div class="card">
+            <h2>技能专长</h2>
+            <p>以下是我在技术开发方面的核心技能和专业领域:</p>
+            <div class="skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">Dify</span>
+                <span class="skill-tag">RagFlow</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">机器学习</span>
+                <span class="skill-tag">深度学习</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>论文列表</h2>
+            <div class="paper">
+                <h3>
+                    <a href="https://ieeexplore.ieee.org/document/10822792" target="_blank">
+                        🏥 一种具有缺失模态的鲁棒鼻咽癌死亡率自适应预测网络
+                    </a>
+                </h3>
+                <p>本文提出了一种用于预测鼻咽癌患者死亡率的自适应网络IMAN，使用在多模态数据缺失的情况下。IMAN具有三个关键模块：动态跨模态校准（DCMC），空间-上下文注意力集成（SCAI）和上下文感知特征获取（CAFA）。DCMC模块利用可学习参数自适应缩放对齐医学图像和文本数据，增强了异构输入的归一化。SCAI模块通过在自注意力机制中融入位置信息来改进特征融合，使其能够检测医学图像中的细微模式。CAFA模块通过学习到的偏移量调整卷积核位置，允许在各种尺度和方向上进行自适应特征捕获。在20%EBV诊断数据缺失的条件下，IMAN对比目前其他模型准确率从0.83提高到0.94，AUC从0.72提高到0.92。</p>
+                <div class="paper-meta">
+                    <span class="paper-tag">第一作者</span>
+                    <span class="paper-tag">CCF-B会议BIBM</span>
+                    <span class="paper-tag">医学AI</span>
+                    <span class="paper-tag">2024</span>
+                </div>
+            </div>
+            <div class="paper">
+                <h3>
+                    <a href="https://link.springer.com/article/10.1007/s00371-024-03376-5" target="_blank">
+                        🔍 基于四元数注意力网络增强的三维舞蹈生成模型
+                    </a>
+                </h3>
+                <p>本文提出QEAN（四元数增强注意力网络），通过旋转位置编码(SPE)增强时序建模，利用四元数旋转注意力(QRA)建立音乐-舞蹈跨模态关联。在AIST++数据集上，QEAN在动作质量、多样性和音乐同步性上全面领先，有效解决了关节变形等难题，实现了高质量音乐驱动舞蹈生成。</p>
+                <div class="paper-meta">
+                    <span class="paper-tag">第二作者</span>
+                    <span class="paper-tag">Sci三区The Visual Computer</span>
+                    <span class="paper-tag">图形学、多模态</span>
+                    <span class="paper-tag">2024</span>
+                </div>
+            </div>
+            <div class="paper">
+                <h3>
+                    <a href="https://link.springer.com/chapter/10.1007/978-981-96-6596-9_13" target="_blank">
+                        🤖 基于视频的人体三维姿态重建
+                    </a>
+                </h3>
+                <p>本文提出FOPS-V方法，通过特征感知优化(FAO)、并行多尺度注意力(PSAA)和归一化特征表示(NFAR)三个模块，显著提升视频中3D人体重建精度。在Human3.6M、3DPW等数据集上，FOPS-V在MPJPE等指标上全面超越现有方法，在复杂姿态和遮挡场景下表现尤为突出。</p>
+                <div class="paper-meta">
+                    <span class="paper-tag">第四作者</span>
+                    <span class="paper-tag">CCF-C会议ICONIP会议论文</span>
+                    <span class="paper-tag">3D重建</span>
+                    <span class="paper-tag">2024</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>项目经验</h2>
+            <div class="project">
+                <h3>📷 图像监控质量智能分析技术研究</h3>
+                <p>在边缘端部署轻量级图像处理模块，通过计算图像的平均亮度并将其映射到0-100范围，实现对图像亮度的快速评估。结合预训练的YOLO模型，对图像中的作业人员、工器具等关键目标进行检测，筛选出亮度低于60且偏暗的图像，确保低质量图像能够被及时识别与处理。实现基于对比学习与Transformer模型的图像质量评估系统，显著提升了复杂场景下图像质量评估的准确性与鲁棒性。</p>
+            </div>
+            <div class="project">
+                <h3>🧍 基于3D Pose Estimation的人体三维数据测量</h3>
+                <p>使用OpenPose实现人体关键点检测和姿态估计，通过PIFuHD模型完成高精度三维人体重建，构建出从2D图像到3D模型的端到端重建流程，实现从平面图像到三维模型的完整转换。调试基于3D模型的人体精确测量算法，利用横截面分析与多平面切片技术，实现对颈部、肩部部等关键部位的精确定位与测量。算法根据人体特征，自动获取身高、体重估计及各部位周长和长度数据，如肩宽、胸围等，同时完成比例校准与数值映射。与前端开发人员合作，实现小程序端的图片上传和参数输入界面，完成测量结果的数据返回和展示功能。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📚 读书笔记</h2>
+            <p>这里是我的一些阅读心得和面试经验整理。</p>
+            <a href="interview-notes.html" class="note-list-item">
+                <h3>我的面经整理与分享</h3>
+                <p class="note-date">点击查看更多</p>
+                <p>包含算法、机器学习、系统设计等面试常见问题与解法。</p>
+            </a>
+            <a href="interview-notes.html?note=reading-book-example" class="note-list-item" style="display: none;">
+                <h3>《如何阅读一本书》阅读体会 (摘要)</h3>
+                <p class="note-date">2025年6月28日</p>
+                <p>本书强调主动阅读的重要性，深入理解知识的方法论...</p>
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>学习经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年至今</div>
+                    <h3>广东工业大学计算机技术硕士</h3>
+                    <p>获得广东工业大学新生学业奖学金，广东工业大学学业奖学金一等奖，广东工业大学学业奖学金二等奖，三七互娱赋能奖助学金</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019-2023年</div>
+                    <h3>佛山大学计算机科学与技术专业</h3>
+                    <p>获得佛山大学学业奖学金二等奖两次、一次佛山大学优秀学生班干、机甲大师高校联盟赛步兵挑战赛二等奖、全国大学生数学竞赛一等奖</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>更多内容</h2>
+        <p>你可以在这里快速浏览其他信息或导航：</p>
+        <ul>
+            <li><a href="interview-notes.html">📚 我的面经/读书笔记</a></li>
+            <li><a href="https://blog.csdn.net/kingJamesbond?spm=1010.2135.3001.5343" target="_blank">📝 我的CSDN博客</a></li>
+            <li><a href="javascript:void(0);">📄 最近的博客文章 (待添加)</a></li>
+            <li><a href="javascript:void(0);">🏷️ 分类标签 (待添加)</a></li>
+            <li><a href="javascript:void(0);">🔗 友情链接 (待添加)</a></li>
+        </ul>
+        <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 25px 0;">
+        <h2>联系方式</h2>
+        <p>欢迎通过以下方式与我联系，共同交流学习。</p>
+        <p style="font-size: 0.9em; color: #555; margin: 15px 0;">📧 Email: 2112305121@mail2.gdut.edu.cn</p>
+        <p style="font-size: 0.9em; color: #555; margin: 15px 0;">🐙 GitHub: <a href="https://github.com/king-huoye" target="_blank" style="color: #667eea;">king-huoye</a></p>
+        <p style="font-size: 0.9em; color: #555; margin: 15px 0;">📱 QQ: 1992202069</p>
+    </div>
+</div>
+
 <script>
-    // 添加一些交互效果
     document.addEventListener('DOMContentLoaded', function() {
-        // 技能标签点击效果
+        const currentTimeSpan = document.getElementById('current-time');
+        function updateCurrentTime() {
+            const now = new Date();
+            const options = {
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                hour12: false
+            };
+            currentTimeSpan.textContent = `⏰ 当前时间: ${now.toLocaleDateString('zh-CN', options)}`;
+        }
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1000);
+
+        const visitorCountSpan = document.getElementById('visitor-count');
+        let visitorCount = localStorage.getItem('page_visitor_count');
+        if (visitorCount === null) {
+            visitorCount = 1;
+        } else {
+            visitorCount = parseInt(visitorCount) + 1;
+        }
+        localStorage.setItem('page_visitor_count', visitorCount);
+        visitorCountSpan.textContent = `👥 访问量: ${visitorCount}`;
+
         const skillTags = document.querySelectorAll('.skill-tag');
         skillTags.forEach(tag => {
             tag.addEventListener('click', function() {
@@ -670,7 +860,6 @@
             });
         });
 
-        // 卡片悬停效果增强
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             card.addEventListener('mouseenter', function() {
@@ -692,17 +881,17 @@
                 const y = e.clientY - rect.top - size / 2;
 
                 ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.5);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                `;
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
 
                 this.style.position = 'relative';
                 this.appendChild(ripple);
@@ -716,13 +905,13 @@
         // 添加涟漪动画到样式中
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
         document.head.appendChild(style);
     });
 </script>
