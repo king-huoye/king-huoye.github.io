@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -697,6 +697,737 @@
       });
     });
   });
+</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elrond的小空间</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部区域优化 */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* 卡片样式优化 */
+        .card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.4s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+        .card:nth-child(5) { animation-delay: 0.8s; }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 2.1em;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* 技能标签优化 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 项目卡片优化 */
+        .project {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .project:hover {
+            transform: translateX(12px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #e9ecef 0%, #dfe3e8 100%);
+        }
+
+        .project h3 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project p {
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 论文卡片样式优化 */
+        .paper {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border-left: 6px solid #28a745;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(40, 167, 69, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .paper:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(40, 167, 69, 0.25);
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left-color: #17a2b8;
+        }
+
+        .paper h3 {
+            color: #155724;
+            margin-bottom: 18px;
+            font-size: 1.5em;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .paper h3 a {
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .paper h3 a:hover {
+            color: #0c5460;
+        }
+
+        .paper p {
+            color: #495057;
+            line-height: 1.7;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 18px;
+        }
+
+        .paper:hover p {
+            color: #2c3e50;
+        }
+
+        /* 论文元信息样式优化 */
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(40, 167, 69, 0.25);
+        }
+
+        .paper-tag {
+            background: rgba(40, 167, 69, 0.15);
+            color: #155724;
+            padding: 7px 15px;
+            border-radius: 22px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .paper:hover .paper-tag {
+            background: rgba(23, 162, 184, 0.15);
+            color: #0c5460;
+        }
+
+        /* 时间线样式优化 */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .timeline-item:hover {
+            background: #e9ecef;
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-date {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .timeline-item p {
+            color: #666;
+        }
+
+        /* 响应式设计优化 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .skills {
+                justify-content: center;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .timeline-item::before {
+                left: -32px;
+            }
+
+            .card h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px 15px;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .contact-item {
+                padding: 10px 18px;
+                font-size: 0.9em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .skill-tag {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* 动画优化 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 浮动动画优化 */
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6a4190);
+        }
+
+        /* 链接样式优化 */
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 头部个人信息 -->
+    <div class="header floating">
+        <div class="profile-img">
+            <img src="/img/YANZI.jpg" alt="个人头像">
+        </div>
+        <h1>霍烨景</h1>
+        <p>算法工程师 | 足球爱好者 | 终身学习者</p>
+        <div class="contact-info">
+            <a href="mailto:2112305121@mail2.gdut.edu.cn" class="contact-item">
+                <span>📧</span> 邮箱联系
+            </a>
+            <a href="tencent://message/?uin=1992202069" class="contact-item">
+                <span>📱</span> QQ
+            </a>
+            <a href="https://github.com/king-huoye" class="contact-item" target="_blank">
+                <span>🐙</span> GitHub
+            </a>
+            <a href="https://blog.csdn.net/your_csdn_url" class="contact-item" target="_blank">
+                <span>📝</span> CSDN
+            </a>
+        </div>
+    </div>
+
+    <!-- 关于我 -->
+    <div class="card">
+        <h2>关于我</h2>
+        <p>我现在是一名广东工业大学计算机技术专业研究生二年级学生，目前正在中通服实习，我的研究方向是无参考图像质量评估以及多模态医学分类，同时我自己还有若干篇共同作者论文。</p>
+        <p style="margin-top: 15px;">希望大家一起交流，提升自己。</p>
+    </div>
+
+    <!-- 技能专长 -->
+    <div class="card">
+        <h2>技能专长</h2>
+        <p>以下是我在技术开发方面的核心技能和专业领域:</p>
+        <div class="skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Dify</span>
+            <span class="skill-tag">RagFlow</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">机器学习</span>
+            <span class="skill-tag">深度学习</span>
+        </div>
+    </div>
+
+    <!-- 论文列表 -->
+    <div class="card">
+        <h2>论文列表</h2>
+        <div class="paper">
+            <h3>
+                <a href="https://ieeexplore.ieee.org/document/10822792" target="_blank">
+                    🏥 一种具有缺失模态的鲁棒鼻咽癌死亡率自适应预测网络
+                </a>
+            </h3>
+            <p>本文提出了一种用于预测鼻咽癌患者死亡率的自适应网络IMAN，使用在多模态数据缺失的情况下。IMAN具有三个关键模块：动态跨模态校准（DCMC），空间-上下文注意力集成（SCAI）和上下文感知特征获取（CAFA）。DCMC模块利用可学习参数自适应缩放对齐医学图像和文本数据，增强了异构输入的归一化。SCAI模块通过在自注意力机制中融入位置信息来改进特征融合，使其能够检测医学图像中的细微模式。CAFA模块通过学习到的偏移量调整卷积核位置，允许在各种尺度和方向上进行自适应特征捕获。在20%EBV诊断数据缺失的条件下，IMAN对比目前其他模型准确率从0.83提高到0.94，AUC从0.72提高到0.92。</p>
+            <div class="paper-meta">
+                <span class="paper-tag">第一作者</span>
+                <span class="paper-tag">CCF-B会议BIBM</span>
+                <span class="paper-tag">医学AI</span>
+                <span class="paper-tag">2024</span>
+            </div>
+        </div>
+        <div class="paper">
+            <h3>
+                <a href="https://link.springer.com/article/10.1007/s00371-024-03376-5" target="_blank">
+                    🔍 基于四元数注意力网络增强的三维舞蹈生成模型
+                </a>
+            </h3>
+            <p>本文提出QEAN（四元数增强注意力网络），通过旋转位置编码(SPE)增强时序建模，利用四元数旋转注意力(QRA)建立音乐-舞蹈跨模态关联。在AIST++数据集上，QEAN在动作质量、多样性和音乐同步性上全面领先，有效解决了关节变形等难题，实现了高质量音乐驱动舞蹈生成。</p>
+            <div class="paper-meta">
+                <span class="paper-tag">第二作者</span>
+                <span class="paper-tag">Sci三区The Visual Computer</span>
+                <span class="paper-tag">图形学、多模态</span>
+                <span class="paper-tag">2024</span>
+            </div>
+        </div>
+        <div class="paper">
+            <h3>
+                <a href="https://link.springer.com/chapter/10.1007/978-981-96-6596-9_13" target="_blank">
+                    🤖 基于视频的人体三维姿态重建
+                </a>
+            </h3>
+            <p>本文提出FOPS-V方法，通过特征感知优化(FAO)、并行多尺度注意力(PSAA)和归一化特征表示(NFAR)三个模块，显著提升视频中3D人体重建精度。在Human3.6M、3DPW等数据集上，FOPS-V在MPJPE等指标上全面超越现有方法，在复杂姿态和遮挡场景下表现尤为突出。</p>
+            <div class="paper-meta">
+                <span class="paper-tag">第四作者</span>
+                <span class="paper-tag">CCF-C会议ICONIP会议论文</span>
+                <span class="paper-tag">3D重建</span>
+                <span class="paper-tag">2024</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 项目经验 -->
+    <div class="card">
+        <h2>项目经验</h2>
+        <div class="project">
+            <h3>📷 图像监控质量智能分析技术研究</h3>
+            <p>在边缘端部署轻量级图像处理模块，通过计算图像的平均亮度并将其映射到0-100范围，实现对图像亮度的快速评估。结合预训练的YOLO模型，对图像中的作业人员、工器具等关键目标进行检测，筛选出亮度低于60且偏暗的图像，确保低质量图像能够被及时识别与处理。实现基于对比学习与Transformer模型的图像质量评估系统，显著提升了复杂场景下图像质量评估的准确性与鲁棒性。</p>
+        </div>
+        <div class="project">
+            <h3>🧍 基于3D Pose Estimation的人体三维数据测量</h3>
+            <p>使用OpenPose实现人体关键点检测和姿态估计，通过PIFuHD模型完成高精度三维人体重建，构建出从2D图像到3D模型的端到端重建流程，实现从平面图像到三维模型的完整转换。调试基于3D模型的人体精确测量算法，利用横截面分析与多平面切片技术，实现对颈部、肩部部等关键部位的精确定位与测量。算法根据人体特征，自动获取身高、体重估计及各部位周长和长度数据，如肩宽、胸围等，同时完成比例校准与数值映射。与前端开发人员合作，实现小程序端的图片上传和参数输入界面，完成测量结果的数据返回和展示功能。</p>
+        </div>
+    </div>
+
+    <!-- 学习经历 -->
+    <div class="card">
+        <h2>学习经历</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023年至今</div>
+                <h3>广东工业大学计算机技术硕士</h3>
+                <p>获得广东工业大学新生学业奖学金,广东工业大学学业奖学金一等奖,三七互娱赋能奖助学金</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2019-2023年</div>
+                <h3>佛山大学计算机科学与技术专业</h3>
+                <p>获得佛山大学学业奖学金二等奖两次、一次佛山大学优秀学生班干、机甲大师高校联盟赛步兵挑战赛二等奖、全国大学生数学竞赛一等奖</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 添加一些交互效果
+    document.addEventListener('DOMContentLoaded', function() {
+        // 技能标签点击效果
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.transform = 'scale(1.1) translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.5)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) translateY(0)';
+                    this.style.boxShadow = '0 4px 10px rgba(102, 126, 234, 0.3)';
+                }, 300);
+            });
+        });
+
+        // 卡片悬停效果增强
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(255, 255, 255, 1)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(255, 255, 255, 0.97)';
+            });
+        });
+
+        // 为所有可点击元素添加涟漪效果
+        document.querySelectorAll('a, .skill-tag, .contact-item').forEach(element => {
+            element.addEventListener('click', function(e) {
+                // 创建涟漪效果
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.5);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // 添加涟漪动画到样式中
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    });
 </script>
 </body>
 </html>
