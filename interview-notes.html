@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的面经整理 - 霍烨景的小空间</title>
-    <link rel="stylesheet" href="index.html" type="text/css" media="screen" title="no title" charset="utf-8">
+    <!-- 修改：正确的CSS引用 -->
+    <link rel="stylesheet" href="styles/main.css">
     <style>
         /* 从主页复制的核心CSS，或者链接到外部CSS文件 */
         /* 为了演示方便，这里再次粘贴部分必要样式，实际应用中可以考虑统一CSS文件 */
@@ -51,12 +52,13 @@
             font-size: 1.2em;
             margin-bottom: 20px;
         }
+
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        /* 联系项（按钮样式），在这里作为“返回主页”按钮 */
+        /* 联系项（按钮样式），在这里作为"返回主页"按钮 */
         .contact-item {
             color: white;
             text-decoration: none;
@@ -65,6 +67,7 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-block;
         }
 
         .contact-item:hover {
@@ -120,6 +123,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: block; /* 确保整个块可点击 */
             color: inherit; /* 继承父元素颜色 */
+            text-decoration: none; /* 添加此行 */
         }
 
         .note-list-item:hover {
@@ -134,11 +138,12 @@
             font-size: 1.15em;
         }
 
-        .note-list-item .note-date {
+        .note-date {
             color: #7f8c8d;
             font-size: 0.85em;
             margin-bottom: 10px;
             font-style: italic;
+            display: block;
         }
 
         .note-list-item p {
@@ -146,69 +151,100 @@
             line-height: 1.6;
             font-size: 0.95em;
         }
+
         /* 响应式调整 */
         @media (max-width: 768px) {
-            .container { padding: 10px; }
-            .header { padding: 20px; }
-            .header h1 { font-size: 2em; }
-            .card { padding: 20px; }
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .card {
+                padding: 20px;
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 可访问性增强 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
+    <header class="header">
         <h1>我的面经与读书笔记</h1>
         <p>这里汇总了我的一些学习笔记和面试经验整理。</p>
-        <a href="index.html" class="contact-item">🔙 返回主页</a>
-    </div>
+        <a href="index.html" class="contact-item" aria-label="返回主页">🔙 返回主页</a>
+    </header>
 </div>
 
 <div class="container" style="padding-top: 0;">
-    <div class="main-content">
-        <div class="card">
+    <main class="main-content">
+        <section class="card">
             <h2>精选面经</h2>
             <a href="notes_template.html?note=git-basic-commands" class="note-list-item">
                 <h3>Git 基础指令</h3>
-                <p class="note-date">2025年7月1日更新</p>
+                <span class="note-date">2025年7月1日更新</span>
                 <p>涵盖Git的基础指令，如clone、add、commit、push等。</p>
             </a>
             <a href="notes_template.html?note=linux-basic-commands" class="note-list-item">
                 <h3>Linux 基础指令</h3>
-                <p class="note-date">2025年7月2日更新</p>
+                <span class="note-date">2025年7月2日更新</span>
                 <p>涵盖Linux的基础指令，如cd、ls、pwd、cat、mv、rm等。</p>
             </a>
             <a href="notes_template.html?note=Transformer" class="note-list-item">
                 <h3>Transformer面经</h3>
-                <p class="note-date">2025年7月4日更新</p>
+                <span class="note-date">2025年7月4日更新</span>
                 <p>包含Transformer的详细介绍和应用场景。</p>
             </a>
             <a href="notes_template.html?note=docker_introduce" class="note-list-item">
                 <h3>Docker</h3>
-                <p class="note-date">2025年7月4日更新</p>
+                <span class="note-date">2025年7月4日更新</span>
                 <p>包含Docker的基本指令。</p>
             </a>
-        </div>
+        </section>
 
-        <div class="card">
+        <section class="card">
             <h2>读书笔记概览</h2>
             <a href="notes_template.html?note=politic" class="note-list-item">
                 <h3>《政治的人生》精要</h3>
-                <p class="note-date">待更新</p>
+                <span class="note-date">待更新</span>
                 <p>关于王教授的一些随笔</p>
             </a>
             <a href="notes_template.html?note=America" class="note-list-item">
                 <h3>《美国反对美国》心得</h3>
-                <p class="note-date">待更新</p>
+                <span class="note-date">待更新</span>
                 <p>上世纪王教授关于对美国的一些考察</p>
             </a>
-        </div>
-    </div>
+        </section>
+    </main>
 </div>
 </body>
 </html>
